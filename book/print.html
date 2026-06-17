@@ -1,0 +1,2138 @@
+<!DOCTYPE HTML>
+<html lang="ko" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>코딩 에이전트 토큰 경제학</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-0ed04ad0.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-14c05909.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">코딩 에이전트 토큰 경제학</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/rever-whale/agent-token-economics" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="학습-개요"><a class="header" href="#학습-개요">학습 개요</a></h1>
+<blockquote>
+<p>Phase: COMPLETE
+Progress: 100%</p>
+</blockquote>
+<p>이 책은 코딩 에이전트와 일할 때 토큰을 아끼는 작은 요령 모음이 아니다. 목표는 개인 개발자가 제한된 토큰 예산 안에서 더 많은 개발 작업을 안정적으로 끝내도록, 컨텍스트를 설계하고 측정하고 개선하는 운영법을 만드는 것이다.</p>
+<p>AI 시대의 개발은 “모델이 얼마나 똑똑한가“만으로 결정되지 않는다. 현업에서는 요청 횟수, 입력 토큰, 캐시 읽기, 캐시 쓰기, 출력 토큰, 도구 호출 결과, 로그 크기, 반복 수정 횟수 같은 더 지루한 숫자가 실제 생산성을 좌우한다. 특히 코딩 에이전트는 사람보다 훨씬 쉽게 불필요한 파일 전체, 거대한 테스트 로그, 중복된 대화 이력, 오래된 요구사항을 한 번에 끌어안는다. 토큰이 남아 있을 때는 그 낭비가 보이지 않지만, 제한이 걸리면 작업 품질과 속도가 동시에 흔들린다.</p>
+<p>핵심 주장은 단순하다.</p>
+<ol>
+<li>토큰 절약은 짧게 말하기가 아니라 정확히 넣고 빨리 버리는 기술이다.</li>
+<li>좋은 컨텍스트는 크기가 작은 컨텍스트가 아니라 재사용 가능하고 위치가 안정적인 컨텍스트다.</li>
+<li>코딩 에이전트의 비용은 모델 호출 한 번보다 탐색, 검증, 재시도 루프 전체로 봐야 한다.</li>
+<li>반복되는 작업 지식은 대화창에 남기지 말고 파일, 지시서, 체크리스트, trace로 분리해야 한다.</li>
+</ol>
+<h2 id="대상-독자"><a class="header" href="#대상-독자">대상 독자</a></h2>
+<p>이 책은 Codex, Claude Code, Cursor, Windsurf, GitHub Copilot 계열 에이전트를 실무 개발에 쓰는 개인 개발자에게 맞춘다. API 가격표를 외우는 책이 아니라, 제한된 request와 token budget 안에서 자신의 작업을 설계하는 책이다.</p>
+<p>개별 Local LLM을 통한 저비용 에이전트 구축은 중요한 미래 방향이지만, 이 책의 기본 전제는 “현재 현업에서는 여전히 상용 모델과 제한된 토큰 예산을 쓴다“이다. 그래서 GPU 운영, 모델 학습, 자체 추론 서버보다 컨텍스트 패킷, 캐시 효율, 로그 관리, repo memory, 작업 분할, 개인 usage log를 우선한다.</p>
+<h2 id="이-책에서-쓰는-네-가지-지표"><a class="header" href="#이-책에서-쓰는-네-가지-지표">이 책에서 쓰는 네 가지 지표</a></h2>
+<p>현장에서 도구마다 이름은 다르지만, 이 책은 다음 네 가지 축으로 비용을 읽는다.</p>
+<ul>
+<li><code>request</code>: 모델 호출 횟수다. 너무 많으면 작업 분할이 잘못되었거나 에이전트가 방향을 잃었을 가능성이 높다.</li>
+<li><code>cache read</code>: 이미 캐시된 입력 prefix를 재사용한 토큰이다. 높을수록 정적인 컨텍스트를 잘 재사용하고 있다는 신호다.</li>
+<li><code>cache create</code>: 새로 캐시에 쓴 입력 토큰이다. 작업 초반에는 필요하지만, 매 요청마다 계속 높으면 캐시가 깨지고 있다는 신호다.</li>
+<li><code>complete</code>: 모델이 생성한 출력 토큰이다. 코드 diff, 설명, 추론, 오류 메시지 재서술이 여기에 들어간다.</li>
+</ul>
+<p>추가로 <code>input_tokens</code>, <code>output_tokens</code>, <code>tool output bytes</code>, <code>wall-clock time</code>, <code>retry count</code>, <code>files read</code>, <code>tests run</code>을 함께 본다. 토큰은 단독 지표가 아니라 작업 흐름의 그림자다. 숫자가 커졌을 때 “모델이 많이 생각했다“로 해석하면 안 된다. 보통은 읽을 필요 없는 것을 읽었거나, 설명할 필요 없는 것을 설명했거나, 검증 실패로 같은 일을 다시 한 것이다.</p>
+<h2 id="읽는-순서"><a class="header" href="#읽는-순서">읽는 순서</a></h2>
+<p>Part 1은 지표의 언어를 만든다. 특히 [[03_usage_metrics|Request, Cache Read, Cache Create, Complete 읽는 법]]과 [[04_metric_ratios|좋은 비율과 나쁜 비율]]은 이 책의 기준점이다.</p>
+<p>Part 2는 토큰 소모량이 큰 업무 습관을 다룬다. 큰 파일 읽기, 로그 폭발, 지시 흔들림, 탐색 결과를 메인 대화에 쌓는 방식, 캐시를 깨는 timestamp와 동적 지시를 따로 본다.</p>
+<p>Part 3은 개인 운영법이다. [[09_agents_md_and_project_memory|AGENTS.md와 프로젝트 메모리 설계]], [[10_context_packets|컨텍스트 패킷과 작업 브리프]], [[11_measurement_dashboard|측정 대시보드와 리뷰 루프]]를 통해 혼자서도 반복 가능한 운영 체계로 바꾼다.</p>
+<p>Part 4는 사례 연구다. [[13_case_studies|세 가지 작업으로 보는 토큰 운영]]에서 bugfix, feature, review 작업을 놓고 어떤 지표가 왜 커지는지, 어떤 정책이 request/cache create/complete를 줄이는지 연결해서 본다.</p>
+<p>Part 5는 통합 리뷰다. [[14_maturity_model|토큰 운영 성숙도 모델]]을 통해 개인 개발자가 현재 어느 단계에 있고, 다음 단계로 가려면 어떤 문서, 지표, 리뷰 루프가 필요한지 판단한다. 마지막으로 [[15_final_review|최종 리뷰와 7일 실행 계획]]에서 책의 내용을 실제 도입 순서로 압축한다.</p>
+<h2 id="산출물"><a class="header" href="#산출물">산출물</a></h2>
+<ul>
+<li>mdBook 형식의 원고</li>
+<li>코딩 에이전트 토큰 사용량 해석 프레임</li>
+<li>request/cache read/cache create/complete 기준 비율</li>
+<li>AGENTS.md와 컨텍스트 패킷 설계 가이드</li>
+<li>개인 작업 대시보드와 작업 리뷰 체크리스트</li>
+<li>bugfix/feature/review 사례 연구</li>
+<li>토큰 운영 성숙도 모델과 통합 리뷰 기준</li>
+<li>7일 실행 계획과 최종 리뷰 기준</li>
+</ul>
+<h2 id="출처"><a class="header" href="#출처">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Meirtz/Awesome-Context-Engineering">Meirtz/Awesome-Context-Engineering</a></li>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+<li><a href="https://github.com/microsoft/fastcontext">microsoft/fastcontext</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="1-토큰-제한은-생산성-문제가-아니라-운영-문제다"><a class="header" href="#1-토큰-제한은-생산성-문제가-아니라-운영-문제다">1. 토큰 제한은 생산성 문제가 아니라 운영 문제다</a></h1>
+<p>토큰 제한을 개인의 말하기 습관 문제로만 보면 해결이 얕아진다. “짧게 물어보자”, “필요한 것만 붙이자” 같은 조언은 맞지만, 혼자 일할 때도 오래가지 않는다. 실제 토큰 낭비는 질문 한 번이 길어서 생기기보다, 작업 흐름이 컨텍스트를 계속 새로 만들고 같은 정보를 반복해서 읽게 만들 때 생긴다.</p>
+<p>코딩 에이전트의 비용은 네 단계에서 생긴다.</p>
+<ol>
+<li>작업을 이해하기 위해 repo와 요구사항을 읽는 단계</li>
+<li>변경 후보를 세우고 파일을 탐색하는 단계</li>
+<li>코드를 수정하고 테스트하는 단계</li>
+<li>실패 로그를 해석하고 재시도하는 단계</li>
+</ol>
+<p>사람 개발자는 이 단계 사이에서 많은 것을 암묵적으로 압축한다. “이 컴포넌트는 저번에도 봤던 패턴이다”, “이 테스트 실패는 fixture 문제다”, “이 파일은 generated라 건드리면 안 된다” 같은 판단을 머릿속에 넣어둔다. 반면 에이전트는 매 세션마다 그것을 다시 배워야 한다. 프로젝트 메모리, 지시 파일, 소스 맵, 테스트 명령, 로그 캡 규칙이 없으면 매번 학습 비용을 다시 낸다.</p>
+<h2 id="토큰-예산은-네-가지-예산의-합이다"><a class="header" href="#토큰-예산은-네-가지-예산의-합이다">토큰 예산은 네 가지 예산의 합이다</a></h2>
+<p>토큰 운영은 단순한 입력/출력 총량 관리가 아니다. 최소 네 가지 예산을 분리해야 한다.</p>
+<ul>
+<li>탐색 예산: 파일 목록, 검색 결과, 코드 주변부, dependency 구조를 읽는 비용</li>
+<li>판단 예산: 요구사항, 제약, 아키텍처 규칙, 변경 전략을 모델이 비교하는 비용</li>
+<li>실행 예산: 실제 patch, 테스트, 로그 분석, 재시도에 드는 비용</li>
+<li>보고 예산: 사용자에게 설명, 요약, PR 본문, 리뷰 답변을 쓰는 비용</li>
+</ul>
+<p>토큰을 줄인다는 것은 모든 예산을 일괄 삭감하는 일이 아니다. 나쁜 절약은 탐색 예산을 너무 줄여 잘못된 파일을 수정하게 만들고, 결국 실행 예산과 재시도 예산을 폭발시킨다. 좋은 절약은 탐색을 구조화해서 필요한 사실만 모델에 올리고, 반복되는 판단 근거를 캐시 가능한 위치에 둔다.</p>
+<h2 id="운영-문제로-볼-때-생기는-질문"><a class="header" href="#운영-문제로-볼-때-생기는-질문">운영 문제로 볼 때 생기는 질문</a></h2>
+<p>개인 프롬프트 관점에서는 “어떻게 물어봐야 하나“를 묻는다. 운영 관점에서는 질문이 바뀐다.</p>
+<ul>
+<li>이 작업 유형은 평균 몇 request 안에 끝나는가?</li>
+<li>첫 request에서 cache create가 큰 것은 정상인가, 매번 큰 것은 비정상인가?</li>
+<li>cache read가 낮은 이유는 지시가 매번 바뀌기 때문인가, 동적 로그가 앞쪽에 붙기 때문인가?</li>
+<li>complete가 높은 이유는 실제 코드 생성 때문인가, 설명 과잉 때문인가?</li>
+<li>테스트 실패 1회당 추가 토큰 비용은 얼마인가?</li>
+<li>파일 전체 읽기를 몇 번 했고, 그중 실제 수정과 관련된 파일은 몇 개인가?</li>
+</ul>
+<p>이 질문을 묻기 시작하면 토큰 제한은 불편한 제약이 아니라 작업 시스템의 품질을 드러내는 계기가 된다. 불필요한 토큰은 보통 불필요한 모호함, 불필요한 로그, 불필요한 재탐색, 불필요한 보고에서 나온다.</p>
+<h2 id="좋은-토큰-운영의-목표"><a class="header" href="#좋은-토큰-운영의-목표">좋은 토큰 운영의 목표</a></h2>
+<p>좋은 운영은 “토큰을 최소로 쓴다“가 아니라 “토큰이 가치 있는 곳에 쓰이게 한다“이다. 코딩 에이전트에게 가치 있는 토큰은 다음 중 하나를 해야 한다.</p>
+<ul>
+<li>변경할 파일을 찾는다.</li>
+<li>요구사항의 모순을 발견한다.</li>
+<li>기존 패턴을 파악한다.</li>
+<li>실패 로그에서 원인을 분리한다.</li>
+<li>코드 diff를 만든다.</li>
+<li>검증 결과를 압축한다.</li>
+<li>다음 작업자가 이어받을 수 있는 상태를 남긴다.</li>
+</ul>
+<p>반대로 가치가 낮은 토큰은 대개 다음 모양을 가진다.</p>
+<ul>
+<li>이미 대화에 있는 요구사항을 다시 길게 설명한다.</li>
+<li>전체 파일을 읽었지만 실제로는 한 함수만 필요했다.</li>
+<li>테스트 로그 수천 줄을 그대로 넣는다.</li>
+<li>이전 실패와 같은 원인인데 새로운 탐색처럼 반복한다.</li>
+<li>매 요청마다 같은 프로젝트 규칙을 새로 쓴다.</li>
+</ul>
+<p>이 책의 나머지 장은 이 차이를 측정하고, 구조로 고정하는 방법을 다룬다.</p>
+<h2 id="출처-1"><a class="header" href="#출처-1">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Meirtz/Awesome-Context-Engineering">Meirtz/Awesome-Context-Engineering</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="2-코딩-에이전트는-어디에서-토큰을-쓰는가"><a class="header" href="#2-코딩-에이전트는-어디에서-토큰을-쓰는가">2. 코딩 에이전트는 어디에서 토큰을 쓰는가</a></h1>
+<p>코딩 에이전트의 토큰 사용량은 사용자의 질문 길이보다 에이전트가 작업 중 읽고 말하는 양에 더 크게 좌우된다. 특히 도구를 쓰는 에이전트는 모델 입력에 도구 결과가 계속 합쳐진다. <code>rg</code> 결과, <code>sed</code> 출력, 테스트 실패 로그, package script 목록, git diff, 타입 에러가 모두 다음 판단의 입력이 된다.</p>
+<h2 id="입력-토큰의-주요-원천"><a class="header" href="#입력-토큰의-주요-원천">입력 토큰의 주요 원천</a></h2>
+<p>입력 토큰은 대략 다음 순서로 커진다.</p>
+<ul>
+<li>시스템/개발자 지시: 항상 붙는 기본 규칙과 도구 사용 규칙</li>
+<li>프로젝트 지시: <code>AGENTS.md</code>, repo memory, coding convention</li>
+<li>사용자 요청: 현재 작업의 목표와 제약</li>
+<li>대화 이력: 이전 설명, 질문, 중간 보고, 실패와 재시도</li>
+<li>도구 결과: 파일 내용, 검색 결과, 로그, 테스트 출력, diff</li>
+<li>에이전트 자체 계획: 이전 단계에서 만든 todo, 가정, 요약</li>
+</ul>
+<p>현업에서 가장 위험한 것은 도구 결과다. 시스템 지시와 프로젝트 지시는 길어도 보통 안정적이고 캐시하기 쉽다. 반면 도구 결과는 동적이며, 한 번 잘못 읽으면 수천 줄이 그대로 대화에 들어온다. 로그와 generated file은 토큰 예산을 가장 빠르게 태운다.</p>
+<h2 id="출력-토큰의-주요-원천"><a class="header" href="#출력-토큰의-주요-원천">출력 토큰의 주요 원천</a></h2>
+<p>출력 토큰은 코드 생성만이 아니다. 실제로는 다음이 섞인다.</p>
+<ul>
+<li>분석과 계획</li>
+<li>사용자 업데이트</li>
+<li>patch 생성</li>
+<li>테스트 실패 설명</li>
+<li>최종 보고</li>
+<li>PR 본문 또는 커밋 메시지</li>
+<li>재시도 시 자기 수정 설명</li>
+</ul>
+<p>출력 토큰이 높은 것이 항상 나쁘지는 않다. 큰 코드 변경이나 정교한 마이그레이션에서는 충분한 출력이 필요하다. 문제는 출력이 작업 산출물이 아니라 반복 설명에 쓰일 때다. 예를 들어 사용자가 이미 알고 있는 배경을 매번 요약하거나, 실패 원인을 확정하지 못한 채 가능성을 나열하면 complete가 커지지만 작업은 전진하지 않는다.</p>
+<h2 id="도구-호출은-무료가-아니다"><a class="header" href="#도구-호출은-무료가-아니다">도구 호출은 무료가 아니다</a></h2>
+<p>셸 명령 자체가 모델 토큰은 아니더라도, 명령 결과를 모델이 읽는 순간 비용이 된다. 그래서 “명령을 많이 실행했다“보다 “명령 결과를 얼마나 크게 읽었는가“가 중요하다.</p>
+<p>예를 들어 다음 두 작업은 request 수가 같아도 비용이 다르다.</p>
+<ul>
+<li><code>rg "functionName" src</code>로 후보 파일 3개를 찾고, 주변 80줄만 읽는다.</li>
+<li><code>cat src/big-file.ts</code>로 4,000줄을 읽고 그 안에서 직접 찾는다.</li>
+</ul>
+<p>두 번째 방식은 탐색을 모델에게 떠넘긴다. 사람은 terminal에서 눈으로 훑고 필요한 부분만 가져올 수 있지만, 에이전트는 출력 전체를 다음 입력으로 보낸다. 그러면 모델은 작업과 무관한 utility, import, type, old code까지 모두 들고 판단해야 한다.</p>
+<h2 id="재시도가-비용을-지배한다"><a class="header" href="#재시도가-비용을-지배한다">재시도가 비용을 지배한다</a></h2>
+<p>토큰이 크게 늘어나는 작업은 보통 첫 시도부터 거대한 작업이었던 경우보다, 작은 실패가 여러 번 반복된 경우다. 테스트 실패 로그를 크게 읽고, 원인을 잘못 잡고, 다른 파일을 다시 읽고, 같은 테스트를 다시 돌리는 루프가 누적된다.</p>
+<p>따라서 토큰 운영에서 중요한 지표는 총 토큰뿐 아니라 <code>retry count</code>다. retry가 늘어날수록 다음 비용도 함께 늘어난다.</p>
+<ul>
+<li>이전 대화 이력이 길어진다.</li>
+<li>실패 로그가 누적된다.</li>
+<li>에이전트가 고려해야 할 가정이 늘어난다.</li>
+<li>사용자가 정정하거나 추가 설명해야 할 가능성이 커진다.</li>
+</ul>
+<p>좋은 에이전트 운영은 실패를 없애는 것이 아니라 실패 출력의 크기를 통제하고, 실패 원인을 빠르게 좁히는 것이다.</p>
+<h2 id="출처-2"><a class="header" href="#출처-2">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+<li><a href="https://github.com/microsoft/fastcontext">microsoft/fastcontext</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="3-request-cache-read-cache-create-complete-읽는-법"><a class="header" href="#3-request-cache-read-cache-create-complete-읽는-법">3. Request, Cache Read, Cache Create, Complete 읽는 법</a></h1>
+<p>코딩 에이전트의 토큰 사용량을 볼 때 가장 먼저 해야 할 일은 지표를 역할별로 분리하는 것이다. 총합만 보면 “많이 썼다“는 사실만 알 수 있다. 하지만 무엇이 늘었는지 모르면 개선책이 반대로 간다.</p>
+<h2 id="request"><a class="header" href="#request">Request</a></h2>
+<p><code>request</code>는 모델 호출 횟수다. request가 많다는 것은 대체로 다음 중 하나다.</p>
+<ul>
+<li>작업이 너무 크게 시작되어 중간 재계획이 많았다.</li>
+<li>요구사항이 불명확해서 확인 질문과 정정이 반복되었다.</li>
+<li>에이전트가 필요한 파일을 찾지 못하고 탐색을 반복했다.</li>
+<li>테스트 실패를 한 번에 좁히지 못했다.</li>
+<li>사용자에게 너무 자주 장황하게 보고했다.</li>
+</ul>
+<p>request를 줄이는 가장 좋은 방법은 한 번에 모든 것을 시키는 것이 아니다. 작업 브리프를 명확히 하고, 탐색 범위를 정하고, 검증 명령을 알려주고, 완료 조건을 분명히 하는 것이다. 큰 작업은 오히려 request를 늘릴 수 있다. 모델이 한 요청 안에서 많은 결정을 해야 하고, 실패했을 때 되돌릴 범위도 커지기 때문이다.</p>
+<h2 id="cache-read"><a class="header" href="#cache-read">Cache Read</a></h2>
+<p><code>cache read</code>는 이미 캐시된 prefix를 재사용한 입력 토큰이다. 이 값이 높다는 것은 정적 컨텍스트가 안정적으로 앞쪽에 있고, 이전 request와 같은 prefix를 공유한다는 뜻이다.</p>
+<p>좋은 cache read 후보는 다음과 같다.</p>
+<ul>
+<li>시스템 지시</li>
+<li>프로젝트 규칙</li>
+<li>도구 정의</li>
+<li>repo 구조 요약</li>
+<li>coding convention</li>
+<li>반복 작업의 평가 기준</li>
+<li>긴 예제와 템플릿</li>
+</ul>
+<p>cache read가 높으면 비용과 latency가 줄어드는 경우가 많다. Anthropic의 prompt caching 문서는 cache read token을 base input token의 0.1배 가격으로 설명하고, cache write는 5분 cache 기준 1.25배, 1시간 cache 기준 2배로 설명한다. 가격표는 공급자와 모델마다 바뀔 수 있으므로, 이 책에서는 구체 가격보다 비율 해석을 우선한다.</p>
+<h2 id="cache-create"><a class="header" href="#cache-create">Cache Create</a></h2>
+<p><code>cache create</code>는 새 cache entry를 만들기 위해 쓴 입력 토큰이다. 첫 요청에서 큰 cache create가 나오는 것은 정상일 수 있다. 프로젝트 지시, 긴 specification, 공통 예제를 캐시에 올리는 과정이기 때문이다.</p>
+<p>문제는 매 request마다 cache create가 계속 큰 경우다. 이때는 보통 cache breakpoint 앞쪽에 매번 바뀌는 값이 들어가 있다.</p>
+<ul>
+<li>timestamp</li>
+<li>현재 사용자 질문</li>
+<li>매번 달라지는 로그</li>
+<li>tool output</li>
+<li>random id</li>
+<li>“이번에는…“으로 시작하는 동적 지시</li>
+</ul>
+<p>캐시는 prefix가 같을 때 유리하다. 앞쪽에 바뀌는 조각을 넣으면 뒤쪽이 아무리 같아도 prefix hash가 달라진다. 따라서 정적 지시는 앞에, 동적 입력은 뒤에 둔다.</p>
+<h2 id="complete"><a class="header" href="#complete">Complete</a></h2>
+<p><code>complete</code>는 모델이 생성한 토큰이다. 일부 도구에서는 <code>completion_tokens</code>, <code>output_tokens</code>처럼 표시된다. 코딩 에이전트에서는 complete가 다음 세 가지로 쓰인다.</p>
+<ul>
+<li>실제 산출물: 코드, 테스트, 문서, diff 설명</li>
+<li>판단 과정: 계획, 가정, 비교, 원인 분석</li>
+<li>커뮤니케이션: 중간 업데이트, 최종 보고, 사용자 질문</li>
+</ul>
+<p>complete를 무조건 낮추면 품질이 떨어질 수 있다. 특히 위험한 변경에서는 모델이 충분히 설명하고 검증 경로를 남겨야 한다. 하지만 반복적인 자기 설명이나 과도한 요약은 줄여야 한다. 개인 repo의 <code>AGENTS.md</code>나 작업 템플릿에는 “최종 답변은 변경 파일, 검증, 남은 리스크만 보고한다“처럼 출력 정책을 넣는 것이 좋다.</p>
+<h2 id="총-입력-토큰-계산"><a class="header" href="#총-입력-토큰-계산">총 입력 토큰 계산</a></h2>
+<p>캐시를 쓰는 환경에서는 <code>input_tokens</code>가 전체 입력을 뜻하지 않을 수 있다. Anthropic 문서는 total input을 다음처럼 계산한다.</p>
+<pre><code class="language-text">total_input_tokens = cache_read_input_tokens + cache_creation_input_tokens + input_tokens
+</code></pre>
+<p>이 관점은 다른 공급자에도 유용하다. 핵심은 “읽은 총량“과 “새로 처리한 비용“을 분리하는 것이다. 같은 100,000 token 입력이라도 대부분 cache read라면 운영상 의미가 다르다. 반대로 매번 100,000 token을 새로 create하고 있다면 구조가 잘못되었을 가능성이 높다.</p>
+<h2 id="지표-이름-정규화하기"><a class="header" href="#지표-이름-정규화하기">지표 이름 정규화하기</a></h2>
+<p>도구와 API마다 usage field 이름은 다르다. 개인 작업 로그에서도 공급자별 원본 이름을 그대로 쓰기보다, 먼저 공통 schema로 정규화하는 편이 좋다.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>공통 이름</th><th>의미</th><th>흔한 원본 이름</th></tr>
+</thead>
+<tbody>
+<tr><td><code>request_count</code></td><td>모델 호출 횟수</td><td>request, run, response, message call</td></tr>
+<tr><td><code>cache_read_tokens</code></td><td>캐시에서 읽은 입력 토큰</td><td>cache read, cached input, <code>cache_read_input_tokens</code>, cached tokens</td></tr>
+<tr><td><code>cache_create_tokens</code></td><td>새 cache entry 생성에 쓴 입력 토큰</td><td>cache create, cache write, <code>cache_creation_input_tokens</code></td></tr>
+<tr><td><code>uncached_input_tokens</code></td><td>캐시 처리 밖의 일반 입력 토큰</td><td>input, prompt, non-cached input</td></tr>
+<tr><td><code>output_tokens</code></td><td>모델이 생성한 토큰</td><td>complete, completion, output</td></tr>
+<tr><td><code>tool_output_bytes</code></td><td>모델에 들어가기 전 도구 출력 크기</td><td>command output bytes, log bytes, observation size</td></tr>
+<tr><td><code>retry_count</code></td><td>실패 후 재시도 횟수</td><td>retries, repair loop count, failed attempts</td></tr>
+</tbody>
+</table>
+</div>
+<p>이 정규화는 숫자를 예쁘게 보이기 위한 작업이 아니다. 같은 작업을 Codex, Claude Code, Cursor, 사내 harness에서 비교하려면 “이 도구의 <code>complete</code>가 저 도구의 <code>output_tokens</code>와 같은 층인가“를 먼저 맞춰야 한다.</p>
+<p>정규화할 때 주의할 점은 세 가지다.</p>
+<ul>
+<li>캐시된 입력도 total context에는 포함된다. 비용은 낮을 수 있지만 attention budget 관점에서는 여전히 읽히는 정보다.</li>
+<li><code>tool_output_bytes</code>는 토큰이 아니지만, 다음 request에 들어가면 입력 토큰이 된다.</li>
+<li>provider billable token과 agent trace token은 다를 수 있다. 개인 작업 로그에서도 둘을 분리해서 보관한다.</li>
+</ul>
+<h2 id="출처-3"><a class="header" href="#출처-3">출처</a></h2>
+<ul>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="4-좋은-비율과-나쁜-비율"><a class="header" href="#4-좋은-비율과-나쁜-비율">4. 좋은 비율과 나쁜 비율</a></h1>
+<p>토큰 지표는 절대값보다 비율로 볼 때 유용하다. 프로젝트 크기, 모델, 도구, 작업 유형에 따라 총량은 달라지지만, 비율은 작업 방식의 건강 상태를 드러낸다.</p>
+<p>이 장의 숫자는 고정 규칙이 아니라 시작점이다. 개인 개발자는 2~4주 정도 자신의 실제 작업 trace를 모아 baseline을 만들어야 한다.</p>
+<h2 id="cache-read-ratio"><a class="header" href="#cache-read-ratio">Cache Read Ratio</a></h2>
+<pre><code class="language-text">cache_read_ratio = cache_read / (cache_read + cache_create + uncached_input)
+</code></pre>
+<p>좋은 반복 작업에서는 이 비율이 높아야 한다. 같은 repo에서 비슷한 작업을 여러 번 수행하는데 cache read ratio가 낮다면 프로젝트 지시나 공통 컨텍스트가 안정적으로 재사용되지 않는다는 뜻이다.</p>
+<p>권장 해석:</p>
+<ul>
+<li>0~20%: 캐시를 거의 못 쓰는 상태. 지시 위치, breakpoint, 동적 입력 위치를 점검한다.</li>
+<li>20~60%: 혼합 상태. 초기 탐색이나 작업별 컨텍스트가 큰 경우 가능하다.</li>
+<li>60~90%: 반복 작업에 건강한 상태. 정적 prefix가 잘 유지되고 있다.</li>
+<li>90% 이상: 매우 좋은 상태일 수 있지만, 동적 요구사항을 충분히 반영하지 못하는지 확인한다.</li>
+</ul>
+<h2 id="cache-create-pressure"><a class="header" href="#cache-create-pressure">Cache Create Pressure</a></h2>
+<pre><code class="language-text">cache_create_pressure = cache_create / request
+</code></pre>
+<p>첫 request의 cache create는 투자다. 하지만 request마다 create가 높으면 비용이 새고 있다. 특히 같은 세션의 2번째, 3번째 요청에서도 create가 계속 크면 캐시를 깨는 동적 prefix를 의심한다.</p>
+<p>실무에서는 첫 request와 이후 request를 분리해서 본다.</p>
+<pre><code class="language-text">initial_cache_create = request_1.cache_create
+steady_cache_create_avg = avg(request_2..n.cache_create)
+</code></pre>
+<p>건강한 패턴은 <code>initial_cache_create</code>가 높고 <code>steady_cache_create_avg</code>가 낮은 것이다. 나쁜 패턴은 둘 다 높거나, request가 늘수록 create가 증가하는 것이다.</p>
+<h2 id="completion-share"><a class="header" href="#completion-share">Completion Share</a></h2>
+<pre><code class="language-text">completion_share = complete / (cache_read + cache_create + uncached_input + complete)
+</code></pre>
+<p>completion share가 높다는 것은 모델이 많이 쓰고 있다는 뜻이다. 코드 생성이 많은 작업에서는 정상이다. 하지만 수정량이 작고 설명이 많은 작업에서 높다면 보고 정책이 장황하거나, 에이전트가 불확실성을 말로만 처리하고 있을 수 있다.</p>
+<p>권장 해석:</p>
+<ul>
+<li>작은 수정/질문 답변: 10~30%</li>
+<li>중간 규모 코드 변경: 20~50%</li>
+<li>문서 생성/리팩터링 설명: 40% 이상 가능</li>
+</ul>
+<p>중요한 것은 complete 자체가 아니라 산출물 밀도다. <code>complete per changed line</code>, <code>complete per passing test</code>, <code>complete per resolved issue</code>처럼 성과와 묶어야 한다.</p>
+<h2 id="request-to-outcome-ratio"><a class="header" href="#request-to-outcome-ratio">Request-to-Outcome Ratio</a></h2>
+<pre><code class="language-text">request_to_outcome = request / completed_task
+</code></pre>
+<p>작업 하나를 완료하는 데 request가 얼마나 드는지 보는 지표다. request가 늘어난다고 항상 나쁜 것은 아니다. 위험한 마이그레이션은 여러 단계 확인이 필요하다. 그러나 비슷한 bug fix의 request가 계속 늘어난다면 작업 브리프, repo memory, 테스트 명령, 로그 캡 규칙 중 하나가 부족하다는 뜻이다.</p>
+<p>개인 baseline 예시:</p>
+<ul>
+<li>단순 문서 수정: 1~2 request</li>
+<li>작은 버그 수정: 3~8 request</li>
+<li>중간 기능 추가: 8~20 request</li>
+<li>대형 마이그레이션: milestone 단위로 분리해서 측정</li>
+</ul>
+<h2 id="tool-output-waste"><a class="header" href="#tool-output-waste">Tool Output Waste</a></h2>
+<pre><code class="language-text">tool_output_waste = irrelevant_tool_output_tokens / total_tool_output_tokens
+</code></pre>
+<p>이 지표는 자동 계산하기 어렵지만 리뷰에서 가장 강력하다. 작업에 필요 없던 로그, 파일 전체, 중복 검색 결과를 표시해보면 낭비가 보인다. 정량화가 어렵다면 간단히 “이번 작업에서 가장 큰 도구 출력 3개가 실제 결정에 쓰였는가“를 리뷰한다.</p>
+<h2 id="좋은-상태의-조합"><a class="header" href="#좋은-상태의-조합">좋은 상태의 조합</a></h2>
+<p>반복되는 repo 작업에서 좋은 조합은 보통 다음과 같다.</p>
+<ul>
+<li>request는 작업 난이도에 비례해서 증가한다.</li>
+<li>cache read ratio는 세션이 진행될수록 높아진다.</li>
+<li>cache create는 초반에 높고 이후 낮아진다.</li>
+<li>complete는 코드 diff와 검증 보고에 집중된다.</li>
+<li>도구 출력은 byte cap 또는 주변부 읽기로 제한된다.</li>
+<li>retry count가 늘 때 로그 크기는 통제된다.</li>
+</ul>
+<p>나쁜 조합은 이렇다.</p>
+<ul>
+<li>request가 많고 cache read는 낮다.</li>
+<li>cache create가 매번 높다.</li>
+<li>complete가 길지만 diff는 작다.</li>
+<li>테스트 실패 로그가 매번 크게 들어온다.</li>
+<li>사용자가 같은 제약을 반복해서 알려준다.</li>
+</ul>
+<h2 id="두-개의-예시-trace"><a class="header" href="#두-개의-예시-trace">두 개의 예시 Trace</a></h2>
+<p>다음 숫자는 특정 vendor 청구 방식이 아니라 개인 작업 리뷰를 위한 가상 trace다.</p>
+<p>좋은 반복 bugfix 세션:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>request</th><th style="text-align: right">cache read</th><th style="text-align: right">cache create</th><th style="text-align: right">uncached input</th><th style="text-align: right">complete</th><th>해석</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td style="text-align: right">0</td><td style="text-align: right">18,000</td><td style="text-align: right">2,500</td><td style="text-align: right">1,200</td><td>repo 규칙과 작업 브리프를 처음 캐시에 올림</td></tr>
+<tr><td>2</td><td style="text-align: right">17,800</td><td style="text-align: right">600</td><td style="text-align: right">1,400</td><td style="text-align: right">900</td><td>관련 파일 주변부만 읽고 수정 계획 확정</td></tr>
+<tr><td>3</td><td style="text-align: right">18,200</td><td style="text-align: right">300</td><td style="text-align: right">2,200</td><td style="text-align: right">1,600</td><td>patch 생성과 테스트 실행</td></tr>
+<tr><td>4</td><td style="text-align: right">18,400</td><td style="text-align: right">200</td><td style="text-align: right">1,000</td><td style="text-align: right">700</td><td>최종 검증과 보고</td></tr>
+</tbody>
+</table>
+</div>
+<p>이 세션은 첫 request의 cache create가 크지만 이후 request에서 cache read가 안정적으로 올라간다. complete도 대부분 계획, patch, 검증 보고에 쓰인다. 도구 출력이 통제되어 uncached input이 크게 튀지 않는다.</p>
+<p>나쁜 로그 폭발 세션:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>request</th><th style="text-align: right">cache read</th><th style="text-align: right">cache create</th><th style="text-align: right">uncached input</th><th style="text-align: right">complete</th><th>해석</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td style="text-align: right">0</td><td style="text-align: right">16,000</td><td style="text-align: right">3,000</td><td style="text-align: right">1,000</td><td>시작은 정상</td></tr>
+<tr><td>2</td><td style="text-align: right">2,000</td><td style="text-align: right">15,500</td><td style="text-align: right">48,000</td><td style="text-align: right">2,600</td><td>전체 테스트 로그가 앞쪽 context를 오염</td></tr>
+<tr><td>3</td><td style="text-align: right">1,800</td><td style="text-align: right">16,200</td><td style="text-align: right">42,000</td><td style="text-align: right">3,200</td><td>같은 로그를 다시 읽고 다른 가설로 이동</td></tr>
+<tr><td>4</td><td style="text-align: right">1,500</td><td style="text-align: right">15,900</td><td style="text-align: right">39,000</td><td style="text-align: right">2,900</td><td>cache read가 낮고 create가 반복됨</td></tr>
+</tbody>
+</table>
+</div>
+<p>이 세션은 cache read가 계속 낮고 cache create가 반복된다. 로그가 동적 prefix 근처에 들어가 캐시 효율을 깨고, 모델이 같은 실패를 여러 방식으로 재해석하느라 complete도 커진다. 이때의 처방은 “모델에게 더 자세히 설명하라“가 아니라 로그를 tail과 keyword search로 줄이고, 실패 요약만 다음 request에 남기는 것이다.</p>
+<h2 id="출처-4"><a class="header" href="#출처-4">출처</a></h2>
+<ul>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="5-큰-파일-읽기와-로그-폭발"><a class="header" href="#5-큰-파일-읽기와-로그-폭발">5. 큰 파일 읽기와 로그 폭발</a></h1>
+<p>코딩 에이전트의 가장 흔한 토큰 낭비는 “모르는 것을 크게 읽는 것“에서 시작한다. 파일 전체, 테스트 로그 전체, 빌드 출력 전체, minified/generated 파일 전체를 읽는 순간 다음 request의 입력이 무거워진다.</p>
+<h2 id="줄-수-제한만으로는-부족하다"><a class="header" href="#줄-수-제한만으로는-부족하다">줄 수 제한만으로는 부족하다</a></h2>
+<p><code>head -n 100</code>은 아무 제한이 없는 것보다 낫지만 충분하지 않다. 한 줄이 매우 길면 100줄도 거대한 출력이 될 수 있다. <code>agents-md</code> 저장소는 알 수 없는 출력에는 byte cap을 쓰는 규칙을 강조한다.</p>
+<pre><code class="language-bash">COMMAND 2&gt;&amp;1 | head -c 4000
+COMMAND 2&gt;&amp;1 | tail -c 4000
+</code></pre>
+<p>핵심은 모델에게 “출력 전체를 읽고 알아서 판단해“라고 하지 않는 것이다. 먼저 검색으로 후보를 줄이고, 실패 로그는 끝부분부터 보고, 필요한 경우에만 범위를 넓힌다.</p>
+<h2 id="큰-파일을-읽어야-할-때의-순서"><a class="header" href="#큰-파일을-읽어야-할-때의-순서">큰 파일을 읽어야 할 때의 순서</a></h2>
+<p>큰 파일을 바로 열기보다 다음 순서를 쓴다.</p>
+<ol>
+<li><code>rg</code>로 symbol, error text, route, component name을 찾는다.</li>
+<li>파일의 outline이나 import 근처를 짧게 본다.</li>
+<li>관련 함수 또는 class 주변 80~160줄만 읽는다.</li>
+<li>수정 전후 diff로 실제 변경 범위를 확인한다.</li>
+<li>필요할 때만 파일 전체를 읽는다.</li>
+</ol>
+<p>이 순서는 단지 토큰을 아끼는 요령이 아니다. 모델이 관련 없는 코드를 함께 고려하다가 잘못된 추론을 하는 위험도 줄인다.</p>
+<h2 id="테스트-로그는-끝에서-시작한다"><a class="header" href="#테스트-로그는-끝에서-시작한다">테스트 로그는 끝에서 시작한다</a></h2>
+<p>테스트 실패는 대개 로그의 끝부분에 핵심 정보가 있다. 전체 로그를 넣으면 경고, setup 출력, 중복 stack trace, unrelated failure가 섞인다.</p>
+<p>권장 패턴:</p>
+<pre><code class="language-bash">npm test 2&gt;&amp;1 | tail -c 12000
+</code></pre>
+<p>처음에는 4,000~12,000 bytes 정도로 시작하고, 원인이 부족할 때만 늘린다. snapshot diff나 type error처럼 앞부분이 필요한 경우에는 특정 키워드로 다시 검색한다.</p>
+<h2 id="출력-크기보다-결정-밀도"><a class="header" href="#출력-크기보다-결정-밀도">출력 크기보다 결정 밀도</a></h2>
+<p>도구 출력은 작을수록 좋은 것이 아니라 결정 밀도가 높을수록 좋다. 예를 들어 <code>rg "useUser"</code> 결과 20줄은 4,000줄 파일 전체보다 훨씬 낫다. 반대로 너무 작은 출력은 원인을 놓쳐 재시도를 늘린다.</p>
+<p>좋은 도구 출력은 다음 특징을 가진다.</p>
+<ul>
+<li>다음 행동을 결정하게 한다.</li>
+<li>주변 맥락이 충분하다.</li>
+<li>중복이 적다.</li>
+<li>동적 noise가 적다.</li>
+<li>다시 실행해도 비슷한 형태로 나온다.</li>
+</ul>
+<h2 id="개인-규칙으로-고정하기"><a class="header" href="#개인-규칙으로-고정하기">개인 규칙으로 고정하기</a></h2>
+<p>큰 출력 제어는 즉흥적인 습관에 맡기면 무너진다. 개인 repo의 <code>AGENTS.md</code>나 작업 템플릿에 다음을 명시한다.</p>
+<ul>
+<li>알 수 없는 출력은 byte cap을 건다.</li>
+<li>로그는 tail부터 읽는다.</li>
+<li>generated, build artifact, lockfile은 요청 없이는 전체 읽지 않는다.</li>
+<li>검색 후 주변부를 읽고, 전체 파일 읽기는 마지막 수단으로 둔다.</li>
+<li>최종 보고에는 가장 큰 도구 출력과 이유를 남긴다.</li>
+</ul>
+<p>이 규칙 하나만으로도 평균 토큰 사용량이 크게 줄 수 있다. <code>agents-md</code> 저자는 byte-capped command output 규칙으로 comparable task 기준 평균 token usage가 약 50% 줄었다고 보고한다. 단일 사례이므로 보편 법칙으로 일반화하면 안 되지만, 로그와 파일 출력이 얼마나 큰 비용원인지 보여주는 강한 신호다.</p>
+<h2 id="출처-5"><a class="header" href="#출처-5">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="6-흔들리는-지시와-반복-설명"><a class="header" href="#6-흔들리는-지시와-반복-설명">6. 흔들리는 지시와 반복 설명</a></h1>
+<p>토큰 낭비는 파일이나 로그에서만 생기지 않는다. 개인 개발자가 매번 같은 말을 다시 설명해야 할 때도 생긴다. 코딩 스타일, 테스트 명령, 금지된 패턴, 리뷰 기준, 배포 제약, 브랜치 규칙이 대화 안에서만 전달되면 세션이 바뀔 때마다 사라진다.</p>
+<h2 id="지시-흔들림의-증상"><a class="header" href="#지시-흔들림의-증상">지시 흔들림의 증상</a></h2>
+<p>지시가 흔들리는 개인 작업 환경에서는 다음 일이 반복된다.</p>
+<ul>
+<li>사용자가 “이 repo에서는 그렇게 안 해“라고 계속 정정한다.</li>
+<li>에이전트가 매번 package manager를 잘못 고른다.</li>
+<li>테스트 명령을 찾느라 <code>package.json</code>과 CI 파일을 반복해서 읽는다.</li>
+<li>generated file이나 vendored file을 수정한다.</li>
+<li>최종 답변 형식이 매번 다르다.</li>
+<li>리뷰 기준이 작업마다 달라진다.</li>
+</ul>
+<p>이 문제는 사용자의 prompt skill 부족이 아니라 지식의 위치 문제다. 자주 쓰는 규칙은 대화가 아니라 repo 안의 안정된 파일에 있어야 한다.</p>
+<h2 id="지시를-세-층으로-나누기"><a class="header" href="#지시를-세-층으로-나누기">지시를 세 층으로 나누기</a></h2>
+<p>토큰 효율적인 지시는 세 층으로 나눈다.</p>
+<ul>
+<li>전역 지시: 모든 프로젝트에서 유지되는 에이전트 운용 원칙</li>
+<li>repo 지시: 이 저장소의 구조, 명령, 금지사항, 검증 규칙</li>
+<li>작업 지시: 이번 작업의 목표, 범위, 완료 조건</li>
+</ul>
+<p>전역 지시와 repo 지시는 캐시 가능한 앞쪽 prefix에 두기 좋다. 작업 지시는 매번 바뀌므로 뒤쪽에 둔다. 이 구분이 없으면 매 요청마다 큰 지시를 새로 만들거나, 동적 작업 지시가 앞쪽 캐시를 깨뜨린다.</p>
+<h2 id="좋은-지시는-짧은-금지보다-판단-기준이다"><a class="header" href="#좋은-지시는-짧은-금지보다-판단-기준이다">좋은 지시는 짧은 금지보다 판단 기준이다</a></h2>
+<p>나쁜 지시는 “하지 마라“만 늘어놓는다. 좋은 지시는 왜 그런 선택을 해야 하는지 판단 기준을 준다.</p>
+<p>예를 들어 다음 지시는 약하다.</p>
+<pre><code class="language-text">큰 파일을 읽지 마라.
+</code></pre>
+<p>더 나은 지시는 이렇다.</p>
+<pre><code class="language-text">처음 보는 파일은 먼저 rg로 symbol을 찾고, 관련 함수 주변 80~160줄만 읽는다. 전체 파일 읽기는 검색으로 위치를 좁힐 수 없거나 파일이 300줄 이하일 때만 사용한다.
+</code></pre>
+<p>이런 지시는 에이전트가 상황에 맞게 행동할 수 있고, 사용자가 매번 정정할 필요를 줄인다.</p>
+<h2 id="반복-설명을-없애는-문서"><a class="header" href="#반복-설명을-없애는-문서">반복 설명을 없애는 문서</a></h2>
+<p>반복 설명을 줄이는 문서는 다음 조건을 만족해야 한다.</p>
+<ul>
+<li>repo 루트에서 쉽게 발견된다.</li>
+<li>1~2분 안에 읽을 수 있다.</li>
+<li>명령은 복사 실행 가능한 형태다.</li>
+<li>금지사항은 이유와 대안이 있다.</li>
+<li>출력 정책과 검증 정책이 있다.</li>
+<li>오래된 규칙을 제거하는 유지보수 책임이 있다.</li>
+</ul>
+<p>문서가 너무 길면 또 다른 토큰 비용이 된다. 프로젝트 메모리는 “모든 것을 설명하는 문서“가 아니라 “첫 request에서 잘못된 길로 가지 않게 하는 안내판“이어야 한다.</p>
+<h2 id="출처-6"><a class="header" href="#출처-6">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+<li><a href="https://github.com/Meirtz/Awesome-Context-Engineering">Meirtz/Awesome-Context-Engineering</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="7-메인-대화에-탐색을-전부-넣는-습관"><a class="header" href="#7-메인-대화에-탐색을-전부-넣는-습관">7. 메인 대화에 탐색을 전부 넣는 습관</a></h1>
+<p>에이전트가 repo를 탐색할 때 모든 파일 읽기와 검색 결과를 메인 대화에 쌓으면, 이후 판단은 점점 무거워진다. 오래된 후보, 버려진 가정, 관련 없는 파일이 계속 따라다니기 때문이다.</p>
+<h2 id="탐색과-실행은-다른-종류의-컨텍스트다"><a class="header" href="#탐색과-실행은-다른-종류의-컨텍스트다">탐색과 실행은 다른 종류의 컨텍스트다</a></h2>
+<p>탐색 단계의 정보는 대부분 일회용이다. “이 파일은 후보가 아니다”, “이 경로에는 관련 코드가 없다”, “검색 결과 30개 중 2개만 중요하다” 같은 정보는 결론만 남기면 된다.</p>
+<p>실행 단계의 정보는 보존 가치가 높다.</p>
+<ul>
+<li>수정할 파일</li>
+<li>기존 패턴</li>
+<li>테스트 명령</li>
+<li>실패 원인</li>
+<li>변경한 diff</li>
+<li>남은 리스크</li>
+</ul>
+<p>메인 대화에는 실행 가치가 있는 요약만 남기고, 탐색 noise는 도구나 별도 scratchpad에서 줄이는 편이 좋다.</p>
+<h2 id="fastcontext가-주는-힌트"><a class="header" href="#fastcontext가-주는-힌트">FastContext가 주는 힌트</a></h2>
+<p>Microsoft의 FastContext는 coding agent를 위한 efficient repository explorer를 훈련하는 방향을 제시한다. 핵심 아이디어는 repo 탐색을 더 잘하는 별도 explorer가 최종 응답에 필요한 근거를 찾아주는 것이다. 이 책에서 FastContext를 그대로 구현하지는 않지만, 운영 원칙은 가져올 수 있다.</p>
+<ul>
+<li>탐색은 별도 단계로 분리한다.</li>
+<li>최종 에이전트에게는 citation과 관련 파일만 넘긴다.</li>
+<li>repo 전체를 읽기보다 필요한 evidence를 찾는다.</li>
+<li>탐색 trace 전체가 아니라 최종 근거를 보존한다.</li>
+</ul>
+<p>상용 코딩 에이전트를 쓰는 개인 개발자도 이 원칙을 적용할 수 있다. 예를 들어 큰 작업을 시작할 때 “먼저 수정 후보 파일과 근거만 찾아서 보고하고, 아직 patch하지 말라“고 시킬 수 있다. 탐색 결과가 맞으면 그때 실행 단계로 넘긴다.</p>
+<h2 id="메인-컨텍스트를-가볍게-유지하는-패턴"><a class="header" href="#메인-컨텍스트를-가볍게-유지하는-패턴">메인 컨텍스트를 가볍게 유지하는 패턴</a></h2>
+<p>권장 패턴은 다음과 같다.</p>
+<ol>
+<li>검색 단계에서는 후보 파일과 근거만 모은다.</li>
+<li>각 후보에 대해 관련성 판단을 한 줄로 남긴다.</li>
+<li>탈락 후보의 긴 출력은 보존하지 않는다.</li>
+<li>실행 단계에서는 선택한 파일 주변부만 다시 읽는다.</li>
+<li>최종 보고에는 실제 결정에 쓰인 파일만 남긴다.</li>
+</ol>
+<p>이 방식은 request 수를 약간 늘릴 수 있지만, 큰 작업에서는 전체 토큰과 실패율을 줄인다. 한 번에 모든 탐색과 수정을 섞으면 잘못된 파일까지 컨텍스트에 들어와 판단을 흐린다.</p>
+<h2 id="탐색-요약-템플릿"><a class="header" href="#탐색-요약-템플릿">탐색 요약 템플릿</a></h2>
+<p>탐색이 끝났을 때 다음 정도만 남기면 충분한 경우가 많다.</p>
+<pre><code class="language-markdown">## 탐색 요약
+
+- 목표: 로그인 실패 시 error banner가 사라지는 문제
+- 관련 파일:
+  - `src/auth/LoginForm.tsx`: submit handler와 error state
+  - `src/auth/useLogin.ts`: mutation error mapping
+- 제외한 파일:
+  - `src/components/Banner.tsx`: 표시 컴포넌트이며 상태 reset과 무관
+- 검증:
+  - `pnpm test LoginForm`
+</code></pre>
+<p>이 요약은 다음 단계의 입력으로 가치가 높고, 검색 raw output보다 훨씬 작다.</p>
+<h2 id="출처-7"><a class="header" href="#출처-7">출처</a></h2>
+<ul>
+<li><a href="https://github.com/microsoft/fastcontext">microsoft/fastcontext</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="8-캐시를-깨는-프롬프트-구조"><a class="header" href="#8-캐시를-깨는-프롬프트-구조">8. 캐시를 깨는 프롬프트 구조</a></h1>
+<p>캐시는 같은 prefix를 재사용할 때 효과가 있다. 따라서 캐시 효율은 프롬프트 내용만이 아니라 순서와 안정성에 달려 있다. 좋은 내용도 매 요청마다 앞부분이 조금씩 바뀌면 cache read가 낮아지고 cache create가 반복된다.</p>
+<h2 id="가장-흔한-실수"><a class="header" href="#가장-흔한-실수">가장 흔한 실수</a></h2>
+<p>가장 흔한 실수는 정적 지시와 동적 입력을 섞는 것이다.</p>
+<p>나쁜 구조:</p>
+<pre><code class="language-text">오늘 날짜: 2026-06-17
+이번 작업: 버튼 버그 수정
+프로젝트 규칙: ...
+테스트 명령: ...
+코딩 스타일: ...
+</code></pre>
+<p>이 구조에서는 날짜와 작업명이 앞쪽에 있어 prefix가 매번 달라진다. 프로젝트 규칙이 같아도 캐시가 잘 맞지 않는다.</p>
+<p>좋은 구조:</p>
+<pre><code class="language-text">프로젝트 규칙: ...
+테스트 명령: ...
+코딩 스타일: ...
+
+이번 작업: 버튼 버그 수정
+오늘 날짜: 2026-06-17
+</code></pre>
+<p>정적인 것을 앞에, 동적인 것을 뒤에 둔다.</p>
+<h2 id="캐시-친화적인-순서"><a class="header" href="#캐시-친화적인-순서">캐시 친화적인 순서</a></h2>
+<p>코딩 에이전트의 입력은 다음 순서가 좋다.</p>
+<ol>
+<li>도구 정의와 시스템 지시</li>
+<li>repo 공통 규칙</li>
+<li>반복 작업 템플릿</li>
+<li>안정적인 architecture summary</li>
+<li>이번 작업 브리프</li>
+<li>이번 작업에서 읽은 파일 주변부</li>
+<li>최신 로그와 테스트 결과</li>
+<li>사용자 추가 지시</li>
+</ol>
+<p>앞쪽은 재사용되고, 뒤쪽은 자주 바뀐다. 이 구분을 지키면 cache read가 늘고 cache create는 초반 이후 줄어든다.</p>
+<h2 id="캐시를-깨는-요소"><a class="header" href="#캐시를-깨는-요소">캐시를 깨는 요소</a></h2>
+<p>다음 요소는 가능하면 캐시 breakpoint 뒤에 둔다.</p>
+<ul>
+<li>timestamp와 현재 날짜</li>
+<li>request id, trace id, random seed</li>
+<li>사용자 최신 메시지</li>
+<li>테스트 로그</li>
+<li>셸 명령 결과</li>
+<li>git diff</li>
+<li>에이전트의 중간 계획</li>
+<li>volatile environment 정보</li>
+</ul>
+<p>반대로 다음은 breakpoint 앞에 두기 좋다.</p>
+<ul>
+<li>coding convention</li>
+<li>package manager</li>
+<li>test command policy</li>
+<li>output policy</li>
+<li>security rule</li>
+<li>architecture map</li>
+<li>반복되는 prompt template</li>
+</ul>
+<h2 id="자동-캐시의-함정"><a class="header" href="#자동-캐시의-함정">자동 캐시의 함정</a></h2>
+<p>일부 API는 자동 caching을 제공한다. 편하지만 마지막 cacheable block이 매번 바뀌는 구조라면 효과가 낮을 수 있다. Anthropic 문서는 바뀌는 timestamp가 포함된 block에 breakpoint를 두면 매 request마다 다른 hash가 되어 cache hit가 나지 않는 예를 설명한다.</p>
+<p>자동 기능은 출발점으로 좋지만, 개인 개발자도 큰 비용을 다루는 작업에서는 명시적 breakpoint와 지시 순서를 관리해야 한다. 특히 long-running agent session에서는 초반 정적 컨텍스트와 후반 동적 tool output의 경계를 분명히 해야 한다.</p>
+<h2 id="캐시-친화-프롬프트-골격"><a class="header" href="#캐시-친화-프롬프트-골격">캐시 친화 프롬프트 골격</a></h2>
+<p>실무에서는 다음 골격을 기본값으로 두고, 작업별 정보만 뒤쪽에 붙이는 방식이 가장 단순하다.</p>
+<pre><code class="language-markdown">## Stable Context
+
+### Role and Operating Rules
+- You are working in this repository.
+- Follow the repo conventions and verification policy.
+
+### Repository Rules
+- Package manager:
+- Test commands:
+- Generated files:
+- Output policy:
+
+### Reusable Task Rubric
+- Before editing:
+- During editing:
+- Before final response:
+
+## Dynamic Task Context
+
+### Current Goal
+
+### Scope
+
+### Evidence
+
+### Latest Tool Output
+
+### User Additions
+</code></pre>
+<p><code>Stable Context</code>는 자주 바뀌지 않아야 한다. 날짜, request id, 최신 로그, 사용자 추가 요구사항은 <code>Dynamic Task Context</code> 아래로 내린다. 이 골격이 지켜지면 첫 request 이후 <code>cache create</code>는 줄고, <code>cache read</code>가 늘어나는 패턴을 기대할 수 있다.</p>
+<p>전체 복사용 템플릿은 [[appendix_e_operating_templates|E. 운영 템플릿]]에 모아두었다.</p>
+<h2 id="출처-8"><a class="header" href="#출처-8">출처</a></h2>
+<ul>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="9-agentsmd와-프로젝트-메모리-설계"><a class="header" href="#9-agentsmd와-프로젝트-메모리-설계">9. AGENTS.md와 프로젝트 메모리 설계</a></h1>
+<p><code>AGENTS.md</code>는 코딩 에이전트에게 repo별 작업 규칙을 알려주는 가벼운 인터페이스다. 이름이나 지원 방식은 도구마다 다르지만, 핵심은 같다. 프로젝트에서 반복되는 판단을 대화창이 아니라 version-controlled file에 둔다.</p>
+<h2 id="agentsmd가-줄이는-비용"><a class="header" href="#agentsmd가-줄이는-비용">AGENTS.md가 줄이는 비용</a></h2>
+<p>좋은 프로젝트 메모리는 다음 비용을 줄인다.</p>
+<ul>
+<li>package manager와 script 탐색 비용</li>
+<li>잘못된 파일 수정 후 되돌리는 비용</li>
+<li>테스트 명령을 찾는 비용</li>
+<li>코드 스타일 정정 비용</li>
+<li>최종 보고 형식 재설명 비용</li>
+<li>위험한 명령 승인/거절 비용</li>
+</ul>
+<p>AGENTS.md는 만능 지식베이스가 아니다. 너무 길면 매 request 입력을 무겁게 만들고, 오래된 규칙은 오히려 실패를 만든다. 목적은 “에이전트가 첫 5분 안에 잘못된 길로 가지 않게 하는 것“이다.</p>
+<h2 id="권장-구조"><a class="header" href="#권장-구조">권장 구조</a></h2>
+<pre><code class="language-markdown"># AGENTS.md
+
+## Project Snapshot
+- Runtime:
+- Package manager:
+- Main app paths:
+
+## Common Commands
+- Install:
+- Typecheck:
+- Unit test:
+- Build:
+
+## Editing Rules
+- Do:
+- Avoid:
+- Generated files:
+
+## Command Output Policy
+- Unknown output:
+- Test failures:
+- Large files:
+
+## Verification Policy
+- Required checks:
+- When checks cannot run:
+
+## Final Response Policy
+- Mention:
+- Do not include:
+</code></pre>
+<p>이 정도 구조면 에이전트가 작업 시작 전에 필요한 결정을 빠르게 내릴 수 있다.</p>
+<h2 id="메모리는-짧고-구체적이어야-한다"><a class="header" href="#메모리는-짧고-구체적이어야-한다">메모리는 짧고 구체적이어야 한다</a></h2>
+<p>나쁜 메모리:</p>
+<pre><code class="language-text">좋은 코드를 작성하라. 테스트를 잘 하라. 프로젝트 스타일을 지켜라.
+</code></pre>
+<p>좋은 메모리:</p>
+<pre><code class="language-text">Use `pnpm --filter web test` for web unit tests.
+Do not edit files under `src/generated/`.
+For unknown command output, cap with `head -c 4000` or `tail -c 12000`.
+Final response must include changed files, checks run, and remaining risks.
+</code></pre>
+<p>추상적 원칙은 모델이 이미 안다. repo memory에는 모델이 모르는 구체 사실을 둔다.</p>
+<h2 id="유지보수-규칙"><a class="header" href="#유지보수-규칙">유지보수 규칙</a></h2>
+<p>프로젝트 메모리는 코드와 함께 늙는다. 다음 규칙이 필요하다.</p>
+<ul>
+<li>command가 바뀌면 같은 PR에서 AGENTS.md도 수정한다.</li>
+<li>3개월 이상 쓰이지 않은 규칙은 삭제 후보로 표시한다.</li>
+<li>반복 정정이 2번 이상 나오면 메모리에 반영한다.</li>
+<li>한 달 뒤의 내가 읽어도 2분 안에 이해되어야 한다.</li>
+<li>장황한 배경 설명은 별도 문서로 빼고 링크만 둔다.</li>
+</ul>
+<p>좋은 AGENTS.md는 토큰을 아낄 뿐 아니라 개인 작업의 암묵지를 드러낸다. 에이전트가 잘못하는 지점은 대개 한 달 뒤의 나도 다시 헷갈릴 지점이다.</p>
+<h2 id="첫-버전을-만드는-순서"><a class="header" href="#첫-버전을-만드는-순서">첫 버전을 만드는 순서</a></h2>
+<p>처음부터 완벽한 AGENTS.md를 만들려고 하면 문서가 길어진다. 다음 순서로 만든다.</p>
+<ol>
+<li>최근 10개 에이전트 작업에서 사용자가 반복 정정한 문장을 모은다.</li>
+<li>package manager, test command, build command처럼 사실 정보만 먼저 쓴다.</li>
+<li>출력 폭발을 막는 command output policy를 넣는다.</li>
+<li>수정 금지 영역과 generated file 위치를 넣는다.</li>
+<li>최종 답변 형식을 3~5개 항목으로 제한한다.</li>
+<li>한 달 뒤 실제로 도움이 되지 않은 규칙을 삭제한다.</li>
+</ol>
+<p>중요한 것은 “에이전트에게 알려주고 싶은 모든 것”이 아니라 “모르면 비용이 커지는 것”을 넣는 것이다. 예를 들어 개발 철학보다 테스트 명령이 먼저다. naming preference보다 generated file 금지가 먼저다.</p>
+<p>복사용 AGENTS.md 템플릿은 [[appendix_e_operating_templates|E. 운영 템플릿]]에 있다.</p>
+<h2 id="출처-9"><a class="header" href="#출처-9">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+<li><a href="https://arxiv.org/abs/2510.21413">Context Engineering for AI Agents in Open-Source Software</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="10-컨텍스트-패킷과-작업-브리프"><a class="header" href="#10-컨텍스트-패킷과-작업-브리프">10. 컨텍스트 패킷과 작업 브리프</a></h1>
+<p>컨텍스트 패킷은 에이전트에게 넘기는 작업 단위 입력이다. 목적은 모델에게 많은 것을 알려주는 것이 아니라, 필요한 결정을 빠르게 내릴 수 있는 최소 충분 정보를 주는 것이다.</p>
+<h2 id="좋은-작업-브리프의-구성"><a class="header" href="#좋은-작업-브리프의-구성">좋은 작업 브리프의 구성</a></h2>
+<pre><code class="language-markdown">## Goal
+무엇을 끝내야 하는가.
+
+## Scope
+수정해도 되는 영역과 제외할 영역.
+
+## Evidence
+버그 재현, 로그 핵심, 관련 파일, 스크린샷, 사용자 보고.
+
+## Constraints
+호환성, 성능, 보안, API 변경 금지, 디자인 제약.
+
+## Verification
+실행해야 할 테스트와 완료 조건.
+
+## Reporting
+최종 답변에 포함할 내용.
+</code></pre>
+<p>이 템플릿은 request를 줄인다. 에이전트가 “어디까지 해도 되는가”, “무엇으로 성공을 판단하는가“를 묻느라 왕복하지 않아도 되기 때문이다.</p>
+<h2 id="너무-많은-컨텍스트의-역효과"><a class="header" href="#너무-많은-컨텍스트의-역효과">너무 많은 컨텍스트의 역효과</a></h2>
+<p>사용자는 종종 불안해서 관련 있어 보이는 모든 정보를 붙인다. 하지만 컨텍스트가 많을수록 모델이 더 정확해지는 것은 아니다. 관련 없는 정보가 많으면 attention이 분산되고, 오래된 요구사항과 최신 요구사항이 충돌할 수 있다.</p>
+<p>컨텍스트 패킷에는 다음을 넣지 않는다.</p>
+<ul>
+<li>오래된 실패 로그 전체</li>
+<li>이미 해결한 가설</li>
+<li>unrelated stack trace</li>
+<li>변경 금지 파일의 전체 내용</li>
+<li>회의록 전체</li>
+<li>“참고가 될 수도 있는” 긴 문서</li>
+</ul>
+<p>대신 결론과 링크를 넣는다.</p>
+<pre><code class="language-markdown">- 이전 가설: API timeout 문제로 봤으나 서버 로그상 200 응답 확인. 제외.
+- 관련 로그: `TypeError: Cannot read property 'id'`가 submit 직후 발생.
+- 전체 로그는 필요 시 `logs/auth-2026-06-17.txt`에서 확인.
+</code></pre>
+<h2 id="패킷은-캐시-뒤에-붙인다"><a class="header" href="#패킷은-캐시-뒤에-붙인다">패킷은 캐시 뒤에 붙인다</a></h2>
+<p>컨텍스트 패킷은 작업마다 바뀌므로 캐시 가능한 repo 지시 뒤에 붙인다. 이렇게 하면 프로젝트 규칙은 cache read로 재사용하고, 작업별 정보만 새로 처리한다.</p>
+<p>권장 순서:</p>
+<ol>
+<li>전역/프로젝트 지시</li>
+<li>작업 브리프</li>
+<li>관련 evidence</li>
+<li>최신 tool output</li>
+</ol>
+<h2 id="패킷-리뷰-질문"><a class="header" href="#패킷-리뷰-질문">패킷 리뷰 질문</a></h2>
+<p>작업을 시작하기 전 다음 질문을 던진다.</p>
+<ul>
+<li>이 정보가 없으면 에이전트가 잘못된 결정을 할까?</li>
+<li>이 정보는 최신인가?</li>
+<li>raw output 대신 요약할 수 있는가?</li>
+<li>같은 정보가 repo memory에 이미 있는가?</li>
+<li>완료 조건이 검증 가능한가?</li>
+</ul>
+<p>이 질문을 통과하지 못하는 컨텍스트는 보통 토큰을 쓰지만 판단을 돕지 않는다.</p>
+<h2 id="작업-유형별-브리프-차이"><a class="header" href="#작업-유형별-브리프-차이">작업 유형별 브리프 차이</a></h2>
+<p>모든 작업 브리프가 같은 모양일 필요는 없다. 작업 유형마다 토큰을 줄이는 핵심 정보가 다르다.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>작업 유형</th><th>꼭 필요한 정보</th><th>빼도 되는 정보</th></tr>
+</thead>
+<tbody>
+<tr><td>bugfix</td><td>expected/actual, 재현 단계, 실패 로그 핵심, 의심 파일</td><td>전체 로그, 오래된 추측</td></tr>
+<tr><td>feature</td><td>사용자 흐름, 범위, 제외 범위, 검증 시나리오</td><td>구현 세부 지시의 과도한 나열</td></tr>
+<tr><td>refactor</td><td>변경 목표, public API 유지 여부, 테스트 범위</td><td>“깔끔하게” 같은 추상 표현</td></tr>
+<tr><td>review</td><td>diff 범위, 리뷰 기준, 위험 우선순위</td><td>전체 프로젝트 배경</td></tr>
+<tr><td>docs</td><td>독자, 문서 위치, 포함/제외할 주장</td><td>관련 자료 전체 원문</td></tr>
+</tbody>
+</table>
+</div>
+<p>작업 브리프는 에이전트가 묻지 않아도 될 질문을 미리 없애는 장치다. 혼자 일할 때도 브리프를 쓰면 다음 세션의 내가 같은 맥락을 다시 설명하지 않아도 된다. 반대로 브리프가 너무 길어져 에이전트가 핵심을 찾게 만들면 실패다.</p>
+<p>복사용 bugfix/feature/review 브리프는 [[appendix_e_operating_templates|E. 운영 템플릿]]에 있다.</p>
+<h2 id="출처-10"><a class="header" href="#출처-10">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Meirtz/Awesome-Context-Engineering">Meirtz/Awesome-Context-Engineering</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="11-측정-대시보드와-리뷰-루프"><a class="header" href="#11-측정-대시보드와-리뷰-루프">11. 측정 대시보드와 리뷰 루프</a></h1>
+<p>토큰 운영은 측정하지 않으면 감으로 흐른다. “이번 작업은 비쌌다“는 느낌보다 어떤 지표가 왜 늘었는지 보는 대시보드가 필요하다.</p>
+<h2 id="최소-수집-항목"><a class="header" href="#최소-수집-항목">최소 수집 항목</a></h2>
+<p>작업 단위로 다음을 기록한다.</p>
+<ul>
+<li>task id</li>
+<li>task type: bugfix, feature, refactor, docs, review</li>
+<li>request count</li>
+<li>cache read tokens</li>
+<li>cache create tokens</li>
+<li>uncached input tokens</li>
+<li>complete/output tokens</li>
+<li>wall-clock time</li>
+<li>files read</li>
+<li>files changed</li>
+<li>largest tool output</li>
+<li>test runs</li>
+<li>retry count</li>
+<li>result: success, partial, blocked</li>
+</ul>
+<p>처음부터 완벽한 telemetry를 만들 필요는 없다. 수동 표로 20개 작업만 모아도 병목이 보인다.</p>
+<h2 id="파생-지표"><a class="header" href="#파생-지표">파생 지표</a></h2>
+<p>기본 지표에서 다음을 계산한다.</p>
+<pre><code class="language-text">cache_read_ratio = cache_read / total_input
+cache_create_pressure = cache_create / request
+completion_share = complete / (total_input + complete)
+retry_rate = retry_count / request
+changed_file_precision = files_changed / files_read
+</code></pre>
+<p><code>changed_file_precision</code>은 탐색 효율을 보는 간단한 지표다. 파일을 40개 읽고 1개만 바꿨다면 탐색이 넓었거나 작업이 모호했을 수 있다. 물론 큰 리팩터링에서는 정상일 수 있으므로 task type별로 봐야 한다.</p>
+<h2 id="리뷰-루프"><a class="header" href="#리뷰-루프">리뷰 루프</a></h2>
+<p>매주 또는 sprint마다 다음 질문으로 리뷰한다.</p>
+<ul>
+<li>cache read ratio가 낮은 작업 유형은 무엇인가?</li>
+<li>cache create가 매 request마다 높은 세션은 어떤 구조였는가?</li>
+<li>가장 큰 tool output 10개 중 실제 결정에 쓰인 것은 몇 개인가?</li>
+<li>retry가 많은 작업은 요구사항 문제였나, 테스트 문제였나, 탐색 문제였나?</li>
+<li>AGENTS.md에 추가하면 다음번에 줄일 수 있는 반복 정정은 무엇인가?</li>
+<li>최종 답변이 너무 길거나 너무 짧아 재작업을 만든 사례는 무엇인가?</li>
+</ul>
+<p>리뷰 결과는 정책으로 바뀌어야 한다. 예를 들어 “테스트 로그는 tail-c 12000부터“라는 규칙, “모든 bugfix 브리프에는 재현 단계와 expected/actual 포함” 같은 규칙이 생긴다.</p>
+<h2 id="목표치-설정"><a class="header" href="#목표치-설정">목표치 설정</a></h2>
+<p>처음부터 산업 표준 목표치를 찾으려 하지 말고 개인 baseline을 만든다.</p>
+<p>예시:</p>
+<ul>
+<li>bugfix 평균 request를 8에서 5로 낮춘다.</li>
+<li>반복 작업 cache read ratio를 60% 이상으로 유지한다.</li>
+<li>steady-state cache create를 첫 request 대비 20% 이하로 유지한다.</li>
+<li>retry 2회 이상 작업은 사후 리뷰한다.</li>
+<li>largest tool output이 50KB를 넘으면 이유를 남긴다.</li>
+</ul>
+<p>목표는 자신의 작업 품질을 개선하기 위한 것이지 에이전트를 억지로 침묵시키기 위한 것이 아니다. 토큰을 덜 쓰고도 실패가 늘면 잘못된 최적화다.</p>
+<h2 id="수동-대시보드로-시작하기"><a class="header" href="#수동-대시보드로-시작하기">수동 대시보드로 시작하기</a></h2>
+<p>처음에는 CSV 하나면 충분하다.</p>
+<pre><code class="language-csv">task_id,date,task_type,agent,request_count,cache_read_tokens,cache_create_tokens,uncached_input_tokens,output_tokens,tool_output_bytes,files_read,files_changed,test_runs,retry_count,result,notes
+AUTH-142,2026-06-17,bugfix,codex,5,72000,19000,8500,6200,18000,6,2,3,1,success,"login error reset"
+UI-088,2026-06-17,feature,claude-code,14,210000,42000,39000,28000,64000,18,7,5,2,success,"table filter"
+DOC-031,2026-06-17,docs,cursor,2,18000,6000,1200,4200,2000,3,1,0,0,success,"README update"
+</code></pre>
+<p>이 CSV는 세 가지 질문에 답할 수 있어야 한다.</p>
+<ul>
+<li>어떤 task type이 request를 많이 쓰는가?</li>
+<li>어떤 agent 또는 repo에서 cache read가 낮은가?</li>
+<li>어떤 작업이 files read 대비 files changed가 낮은가?</li>
+</ul>
+<p>자동화는 나중 문제다. 먼저 사람이 읽는 표로 시작해야 숫자의 의미를 배운다.</p>
+<h2 id="주간-리뷰-템플릿"><a class="header" href="#주간-리뷰-템플릿">주간 리뷰 템플릿</a></h2>
+<pre><code class="language-markdown">## Agent Token Review
+
+Period:
+Repositories:
+Tasks reviewed:
+
+### Biggest Spenders
+- Task:
+- Why expensive:
+- Avoidable:
+- Policy change:
+
+### Cache Health
+- Best cache read ratio:
+- Worst cache read ratio:
+- Repeated cache create cause:
+
+### Tool Output
+- Largest output:
+- Was it needed:
+- New output cap rule:
+
+### Action Items
+- AGENTS.md update:
+- Brief template update:
+- Test/log command update:
+</code></pre>
+<p>리뷰의 산출물은 그래프가 아니라 정책 변경이어야 한다. 숫자를 보고도 <code>AGENTS.md</code>, 작업 브리프, 검증 명령, 로그 캡 규칙이 바뀌지 않으면 다음 주에도 같은 비용을 낸다.</p>
+<h2 id="출처-11"><a class="header" href="#출처-11">출처</a></h2>
+<ul>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+<li><a href="https://github.com/microsoft/fastcontext">microsoft/fastcontext</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="12-실전-운영-플레이북"><a class="header" href="#12-실전-운영-플레이북">12. 실전 운영 플레이북</a></h1>
+<p>이 장은 앞의 내용을 개인 개발자의 실제 운영 절차로 묶는다.</p>
+<h2 id="1단계-현재-비용을-보이게-한다"><a class="header" href="#1단계-현재-비용을-보이게-한다">1단계: 현재 비용을 보이게 한다</a></h2>
+<p>먼저 10~20개 작업만 기록한다. 자동화가 없어도 된다. 작업별 request, cache read, cache create, complete, retry count, 가장 큰 도구 출력만 적는다.</p>
+<p>이 단계의 목표는 최적화가 아니라 패턴 발견이다. 대부분의 개인 개발자는 다음 중 하나를 발견한다.</p>
+<ul>
+<li>특정 작업 유형에서 request가 비정상적으로 많다.</li>
+<li>테스트 로그가 대부분의 토큰을 먹는다.</li>
+<li>cache read가 거의 없다.</li>
+<li>cache create가 매번 높다.</li>
+<li>사용자가 같은 repo 규칙을 반복 설명한다.</li>
+</ul>
+<h2 id="2단계-출력-폭발을-먼저-막는다"><a class="header" href="#2단계-출력-폭발을-먼저-막는다">2단계: 출력 폭발을 먼저 막는다</a></h2>
+<p>가장 빠른 개선은 command output policy다.</p>
+<pre><code class="language-markdown">## Command Output Policy
+
+- Unknown command output must be capped with `head -c 4000`.
+- Test failures should start with `tail -c 12000`.
+- Do not read generated files, lockfiles, or build artifacts in full unless necessary.
+- Prefer `rg` before opening large files.
+</code></pre>
+<p>이 정책은 구현 비용이 낮고 효과가 빠르다.</p>
+<h2 id="3단계-agentsmd를-만든다"><a class="header" href="#3단계-agentsmd를-만든다">3단계: AGENTS.md를 만든다</a></h2>
+<p>다음으로 repo memory를 만든다. 첫 버전은 100~200줄을 넘기지 않는다.</p>
+<ul>
+<li>package manager</li>
+<li>주요 경로</li>
+<li>개발/테스트 명령</li>
+<li>수정 금지 영역</li>
+<li>output policy</li>
+<li>verification policy</li>
+<li>final response policy</li>
+</ul>
+<p>반복 정정이 생길 때마다 문서에 반영한다.</p>
+<h2 id="4단계-작업-브리프-템플릿을-쓴다"><a class="header" href="#4단계-작업-브리프-템플릿을-쓴다">4단계: 작업 브리프 템플릿을 쓴다</a></h2>
+<p>모든 작업에 긴 specification이 필요한 것은 아니다. 하지만 bugfix와 feature는 최소 템플릿을 쓰는 편이 좋다.</p>
+<pre><code class="language-markdown">Goal:
+Scope:
+Evidence:
+Constraints:
+Verification:
+</code></pre>
+<p>이 템플릿은 request와 retry를 줄이는 데 직접적이다.</p>
+<h2 id="5단계-캐시-친화적으로-재배치한다"><a class="header" href="#5단계-캐시-친화적으로-재배치한다">5단계: 캐시 친화적으로 재배치한다</a></h2>
+<p>프롬프트와 지시 순서를 점검한다.</p>
+<ul>
+<li>정적 지시는 앞에 둔다.</li>
+<li>동적 작업 정보는 뒤에 둔다.</li>
+<li>timestamp와 로그는 cache breakpoint 앞에 두지 않는다.</li>
+<li>긴 예제와 평가 기준은 안정된 block으로 유지한다.</li>
+</ul>
+<p>cache read ratio가 낮으면 먼저 순서를 의심한다.</p>
+<h2 id="6단계-리뷰로-정책을-업데이트한다"><a class="header" href="#6단계-리뷰로-정책을-업데이트한다">6단계: 리뷰로 정책을 업데이트한다</a></h2>
+<p>주기적으로 비싼 작업을 3개 골라 사후 리뷰한다.</p>
+<ul>
+<li>어떤 출력이 가장 컸는가?</li>
+<li>그 출력은 실제로 필요했는가?</li>
+<li>어떤 지시가 없어서 재시도했는가?</li>
+<li>어떤 정보를 cacheable context로 올릴 수 있는가?</li>
+<li>다음번에 request를 줄이는 가장 작은 정책은 무엇인가?</li>
+</ul>
+<p>정책은 작은 문장으로 끝나야 한다. “더 조심하자“는 정책이 아니다. “unknown output은 <code>head -c 4000</code>“처럼 실행 가능한 문장이어야 한다.</p>
+<h2 id="최종-원칙"><a class="header" href="#최종-원칙">최종 원칙</a></h2>
+<p>토큰을 아끼는 개인 개발자는 에이전트에게 적게 알려주는 사람이 아니다. 무엇을 오래 기억할지, 무엇을 이번 작업에만 쓸지, 무엇을 읽지 말아야 할지 잘 나누는 사람이다.</p>
+<h2 id="30일-도입-계획"><a class="header" href="#30일-도입-계획">30일 도입 계획</a></h2>
+<p>작게 시작하려면 다음 순서를 쓴다.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>기간</th><th>목표</th><th>산출물</th></tr>
+</thead>
+<tbody>
+<tr><td>1주차</td><td>현재 비용을 관찰한다</td><td>10개 작업 usage worksheet</td></tr>
+<tr><td>2주차</td><td>출력 폭발을 줄인다</td><td>command output policy가 들어간 AGENTS.md</td></tr>
+<tr><td>3주차</td><td>작업 입력을 표준화한다</td><td>bugfix/feature/review 브리프 템플릿</td></tr>
+<tr><td>4주차</td><td>리뷰 루프를 만든다</td><td>주간 token review와 정책 변경 1개</td></tr>
+</tbody>
+</table>
+</div>
+<p>이 계획의 핵심은 자동화보다 습관이다. 자동 수집이 없어도, 가장 큰 tool output과 retry 원인을 기록하기 시작하면 낭비가 보인다. 낭비가 보이면 개인 규칙으로 바꿀 수 있다.</p>
+<p>도입에 필요한 복사용 템플릿은 [[appendix_d_usage_worksheet|D. 지표 워크시트와 예시 Trace]]와 [[appendix_e_operating_templates|E. 운영 템플릿]]에 있다.</p>
+<h2 id="출처-12"><a class="header" href="#출처-12">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+<li><a href="https://github.com/microsoft/fastcontext">microsoft/fastcontext</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="13-세-가지-작업으로-보는-토큰-운영"><a class="header" href="#13-세-가지-작업으로-보는-토큰-운영">13. 세 가지 작업으로 보는 토큰 운영</a></h1>
+<p>이 장은 앞에서 만든 지표와 템플릿을 실제 작업 흐름에 연결한다. 숫자는 특정 vendor의 청구 예시가 아니라 개인 작업 리뷰를 위한 가상 trace다. 목적은 “얼마가 정답인가“가 아니라 “어떤 패턴이면 어디를 고쳐야 하는가“를 읽는 것이다.</p>
+<h2 id="사례-1-작은-bugfix가-비싸지는-순간"><a class="header" href="#사례-1-작은-bugfix가-비싸지는-순간">사례 1: 작은 Bugfix가 비싸지는 순간</a></h2>
+<p>상황:</p>
+<ul>
+<li>로그인 실패 후 error banner가 다음 submit에서 사라지지 않는다.</li>
+<li>실제 수정은 <code>LoginForm.tsx</code>와 <code>useLogin.ts</code> 두 파일이면 충분하다.</li>
+<li>하지만 초기 브리프에는 재현 단계와 expected/actual이 없다.</li>
+</ul>
+<p>나쁜 진행:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>단계</th><th>행동</th><th>지표 변화</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>“로그인 에러 고쳐줘“만 전달</td><td>request 증가 가능성 시작</td></tr>
+<tr><td>2</td><td>에이전트가 auth 폴더 전체와 shared UI를 넓게 탐색</td><td>uncached input, files read 증가</td></tr>
+<tr><td>3</td><td>전체 테스트 로그를 그대로 읽음</td><td>tool output bytes와 uncached input 급증</td></tr>
+<tr><td>4</td><td>실패 원인을 API timeout으로 오해</td><td>retry 증가</td></tr>
+<tr><td>5</td><td>사용자가 expected/actual을 뒤늦게 설명</td><td>request와 complete 추가 발생</td></tr>
+</tbody>
+</table>
+</div>
+<p>나쁜 trace:</p>
+<pre><code class="language-text">request_count: 9
+cache_read_tokens: 24,000
+cache_create_tokens: 76,000
+uncached_input_tokens: 91,000
+output_tokens: 17,000
+tool_output_bytes: 180,000
+files_read: 21
+files_changed: 2
+retry_count: 4
+</code></pre>
+<p>핵심 문제는 모델 성능이 아니다. 작업 브리프가 약했고, 로그 출력이 커졌고, 실패 요약이 다음 request에 압축되지 않았다.</p>
+<p>좋은 진행:</p>
+<pre><code class="language-markdown">## Goal
+로그인 실패 후 다음 submit에서도 error banner가 남는 문제를 수정한다.
+
+## Expected / Actual
+- Expected: 새 submit이 시작되면 이전 error banner가 reset된다.
+- Actual: 이전 error banner가 남아 사용자가 새 시도를 구분하기 어렵다.
+
+## Evidence
+- Error state는 `LoginForm.tsx` submit handler에서 관리된다.
+- Login mutation은 `useLogin.ts`를 통해 호출된다.
+
+## Verification
+- `pnpm test LoginForm`
+</code></pre>
+<p>좋은 trace:</p>
+<pre><code class="language-text">request_count: 4
+cache_read_tokens: 68,000
+cache_create_tokens: 18,000
+uncached_input_tokens: 7,800
+output_tokens: 5,900
+tool_output_bytes: 14,000
+files_read: 5
+files_changed: 2
+retry_count: 1
+</code></pre>
+<p>줄어든 값:</p>
+<ul>
+<li><code>request</code>: expected/actual과 검증 명령이 있어 확인 왕복이 줄었다.</li>
+<li><code>uncached_input</code>: auth 폴더 전체 대신 의심 파일 주변부만 읽었다.</li>
+<li><code>cache_create</code>: 동적 로그가 stable prefix를 깨지 않았다.</li>
+<li><code>complete</code>: 모델이 긴 가능성 목록 대신 patch와 검증 보고에 출력 토큰을 썼다.</li>
+</ul>
+<h2 id="사례-2-feature-작업에서-scope가-흔들릴-때"><a class="header" href="#사례-2-feature-작업에서-scope가-흔들릴-때">사례 2: Feature 작업에서 scope가 흔들릴 때</a></h2>
+<p>상황:</p>
+<ul>
+<li>product table에 상태 필터를 추가한다.</li>
+<li>기존 table component와 URL query sync 패턴이 이미 있다.</li>
+<li>사용자는 “필터 추가“만 요청하고, URL sync 여부와 접근성 요구를 말하지 않았다.</li>
+</ul>
+<p>나쁜 진행은 보통 이런 모양이다.</p>
+<ul>
+<li>에이전트가 table state, route state, API query, design component를 모두 탐색한다.</li>
+<li>구현 후 사용자가 “URL에 남아야 한다“고 정정한다.</li>
+<li>다시 route hook을 읽고 상태 구조를 바꾼다.</li>
+<li>테스트가 깨지고, snapshot diff를 크게 읽는다.</li>
+</ul>
+<p>나쁜 trace:</p>
+<pre><code class="language-text">request_count: 16
+cache_read_tokens: 110,000
+cache_create_tokens: 64,000
+uncached_input_tokens: 72,000
+output_tokens: 31,000
+files_read: 29
+files_changed: 8
+test_runs: 6
+retry_count: 3
+</code></pre>
+<p>이 경우 줄여야 할 것은 단순히 output이 아니다. feature 작업은 원래 output이 크다. 문제는 scope가 늦게 확정되어 files read와 retry가 커진 것이다.</p>
+<p>좋은 feature 브리프:</p>
+<pre><code class="language-markdown">## Goal
+Product table에 status 필터를 추가한다.
+
+## Scope
+- Include: UI segmented control, URL query sync, table filtering.
+- Exclude: server API 변경, saved filter preset.
+
+## Existing Patterns
+- Similar URL sync: `useProductSearchParams`
+- Similar filter UI: `OrderStatusFilter`
+- Similar test: `ProductTable.filters.test.tsx`
+
+## Verification
+- `pnpm test ProductTable`
+- URL query가 reload 후 유지되는지 확인.
+</code></pre>
+<p>좋은 trace:</p>
+<pre><code class="language-text">request_count: 9
+cache_read_tokens: 142,000
+cache_create_tokens: 30,000
+uncached_input_tokens: 31,000
+output_tokens: 24,000
+files_read: 13
+files_changed: 6
+test_runs: 4
+retry_count: 1
+</code></pre>
+<p>줄어든 값:</p>
+<ul>
+<li><code>request</code>: late correction이 줄었다.</li>
+<li><code>files_read</code>: similar pattern을 알려줘 탐색 후보가 좁아졌다.</li>
+<li><code>cache_create</code>: feature scope가 stable하게 유지되었다.</li>
+<li><code>retry_count</code>: URL sync 요구가 처음부터 반영되었다.</li>
+</ul>
+<h2 id="사례-3-review-작업에서-complete가-낭비될-때"><a class="header" href="#사례-3-review-작업에서-complete가-낭비될-때">사례 3: Review 작업에서 complete가 낭비될 때</a></h2>
+<p>상황:</p>
+<ul>
+<li>PR diff를 리뷰한다.</li>
+<li>사용자는 bug risk와 missing test를 원한다.</li>
+<li>에이전트가 diff 전체를 장황하게 요약한다.</li>
+</ul>
+<p>나쁜 리뷰 출력은 다음과 같다.</p>
+<ul>
+<li>변경 요약이 길다.</li>
+<li>코드 스타일 칭찬이 많다.</li>
+<li>findings보다 배경 설명이 먼저 나온다.</li>
+<li>같은 위험을 여러 문단으로 반복한다.</li>
+<li>line reference가 없다.</li>
+</ul>
+<p>나쁜 trace:</p>
+<pre><code class="language-text">request_count: 5
+cache_read_tokens: 35,000
+cache_create_tokens: 18,000
+uncached_input_tokens: 42,000
+output_tokens: 22,000
+files_read: 12
+findings: 2
+</code></pre>
+<p>이 작업에서 <code>output_tokens</code>가 높은 것은 코드 생성 때문이 아니다. 리뷰 산출물과 무관한 요약이 complete를 태운 것이다.</p>
+<p>좋은 review brief:</p>
+<pre><code class="language-markdown">## Review Priorities
+1. Correctness
+2. Regression risk
+3. Missing tests
+
+## Output Format
+- Findings first.
+- Include file/line references.
+- No broad summary unless there are no findings.
+- Mention test gaps separately.
+</code></pre>
+<p>좋은 trace:</p>
+<pre><code class="language-text">request_count: 3
+cache_read_tokens: 41,000
+cache_create_tokens: 9,000
+uncached_input_tokens: 18,000
+output_tokens: 7,500
+files_read: 7
+findings: 2
+</code></pre>
+<p>줄어든 값:</p>
+<ul>
+<li><code>complete</code>: output policy가 findings 중심으로 고정되었다.</li>
+<li><code>uncached_input</code>: diff 전체 반복 읽기 대신 관련 파일과 hunk만 읽었다.</li>
+<li><code>request</code>: 리뷰 기준을 다시 묻지 않았다.</li>
+</ul>
+<h2 id="세-사례에서-공통으로-보이는-것"><a class="header" href="#세-사례에서-공통으로-보이는-것">세 사례에서 공통으로 보이는 것</a></h2>
+<p>토큰 낭비는 보통 한 지표만 커지는 형태가 아니다. 하나가 흔들리면 다른 지표도 따라 흔들린다.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>원인</th><th>먼저 커지는 값</th><th>뒤따라 커지는 값</th></tr>
+</thead>
+<tbody>
+<tr><td>작업 브리프 부족</td><td>request</td><td>complete, files read</td></tr>
+<tr><td>전체 로그 읽기</td><td>uncached input</td><td>cache create, retry</td></tr>
+<tr><td>scope late correction</td><td>request</td><td>files changed, test runs</td></tr>
+<tr><td>output policy 부재</td><td>complete</td><td>request</td></tr>
+<tr><td>cache-breaking prompt</td><td>cache create</td><td>latency, cost</td></tr>
+</tbody>
+</table>
+</div>
+<p>따라서 운영 개선도 한 줄 규칙이 아니라 연결된 정책이어야 한다.</p>
+<ul>
+<li>AGENTS.md는 반복 지시를 줄인다.</li>
+<li>작업 브리프는 request와 retry를 줄인다.</li>
+<li>output cap은 uncached input을 줄인다.</li>
+<li>stable/dynamic context 분리는 cache create를 줄인다.</li>
+<li>review output policy는 complete를 줄인다.</li>
+</ul>
+<h2 id="사례-리뷰-템플릿"><a class="header" href="#사례-리뷰-템플릿">사례 리뷰 템플릿</a></h2>
+<p>비싼 작업 하나를 골라 다음 순서로 리뷰한다.</p>
+<pre><code class="language-markdown">## Case Review
+
+Task:
+Task type:
+Result:
+
+### What got expensive?
+
+- request:
+- cache read:
+- cache create:
+- uncached input:
+- complete:
+- tool output:
+
+### Why?
+
+- Missing brief:
+- Missing repo memory:
+- Large output:
+- Late correction:
+- Test failure:
+- Output policy:
+
+### Next Policy
+
+- AGENTS.md update:
+- Brief template update:
+- Command output policy:
+- Cache layout change:
+- Dashboard metric:
+</code></pre>
+<p>이 템플릿의 마지막 줄이 중요하다. 사례 리뷰는 반성이 아니라 정책 변경으로 끝나야 한다.</p>
+<h2 id="출처-13"><a class="header" href="#출처-13">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="14-토큰-운영-성숙도-모델"><a class="header" href="#14-토큰-운영-성숙도-모델">14. 토큰 운영 성숙도 모델</a></h1>
+<p>토큰 운영은 한 번의 프롬프트 개선으로 끝나지 않는다. 개인 개발자가 에이전트를 쓰는 방식, repo memory를 유지하는 방식, 로그를 다루는 방식, 사후 리뷰를 하는 방식이 함께 성숙해야 한다. 이 장은 책 전체를 하나의 평가 모델로 묶는다.</p>
+<h2 id="level-0-개인-감각에-의존한다"><a class="header" href="#level-0-개인-감각에-의존한다">Level 0: 개인 감각에 의존한다</a></h2>
+<p>특징:</p>
+<ul>
+<li>사용자가 매번 같은 규칙을 다시 설명한다.</li>
+<li>에이전트가 package manager와 test command를 반복 탐색한다.</li>
+<li>큰 파일과 테스트 로그를 자주 통째로 읽는다.</li>
+<li>request가 많아도 왜 많은지 알 수 없다.</li>
+<li>cache read/cache create를 보지 않는다.</li>
+</ul>
+<p>대표 증상:</p>
+<pre><code class="language-text">request_count: 높음
+cache_read_ratio: 낮음
+cache_create: 매번 높음
+tool_output_bytes: 통제 안 됨
+retry_count: 높음
+</code></pre>
+<p>다음 단계로 가는 가장 작은 행동은 <code>AGENTS.md</code> 초안을 만들고, unknown output에 byte cap을 거는 것이다.</p>
+<h2 id="level-1-출력-폭발을-통제한다"><a class="header" href="#level-1-출력-폭발을-통제한다">Level 1: 출력 폭발을 통제한다</a></h2>
+<p>특징:</p>
+<ul>
+<li><code>rg</code>로 위치를 좁힌 뒤 파일 주변부를 읽는다.</li>
+<li>테스트 로그는 <code>tail -c</code>로 시작한다.</li>
+<li>generated file, build artifact, lockfile 전체 읽기를 피한다.</li>
+<li>최종 답변에 긴 로그를 붙이지 않는다.</li>
+</ul>
+<p>좋아지는 지표:</p>
+<ul>
+<li><code>uncached_input_tokens</code>가 줄어든다.</li>
+<li><code>tool_output_bytes</code>가 줄어든다.</li>
+<li>같은 실패를 다시 해석하는 <code>retry_count</code>가 줄어든다.</li>
+</ul>
+<p>이 단계의 함정은 “작게 읽기“가 “적게 이해하기“로 변하는 것이다. 필요한 맥락까지 잘라내면 잘못된 수정이 늘어난다. 출력 제한은 검색, 주변부 읽기, 실패 요약과 함께 써야 한다.</p>
+<h2 id="level-2-repo-memory가-작동한다"><a class="header" href="#level-2-repo-memory가-작동한다">Level 2: repo memory가 작동한다</a></h2>
+<p>특징:</p>
+<ul>
+<li>repo 루트에 짧고 구체적인 에이전트 지시 파일이 있다.</li>
+<li>package manager, 주요 명령, 수정 금지 경로, output policy가 명시되어 있다.</li>
+<li>반복 정정이 생기면 <code>AGENTS.md</code>에 반영한다.</li>
+<li>오래된 규칙을 삭제한다.</li>
+</ul>
+<p>좋아지는 지표:</p>
+<ul>
+<li>첫 request 이후 <code>cache_read_ratio</code>가 올라간다.</li>
+<li>command 탐색으로 인한 request가 줄어든다.</li>
+<li>사용자의 반복 정정이 줄어든다.</li>
+</ul>
+<p>이 단계에서 중요한 것은 문서 길이다. repo memory가 길어질수록 다시 토큰 비용이 된다. 좋은 repo memory는 “모르면 비싸지는 사실“만 담는다.</p>
+<h2 id="level-3-작업-브리프가-표준화된다"><a class="header" href="#level-3-작업-브리프가-표준화된다">Level 3: 작업 브리프가 표준화된다</a></h2>
+<p>특징:</p>
+<ul>
+<li>bugfix에는 expected/actual, 재현 단계, 실패 로그 핵심이 있다.</li>
+<li>feature에는 include/exclude scope와 기존 패턴이 있다.</li>
+<li>review에는 리뷰 우선순위와 출력 형식이 있다.</li>
+<li>작업 브리프는 stable context 뒤에 붙는다.</li>
+</ul>
+<p>좋아지는 지표:</p>
+<ul>
+<li><code>request_count</code>가 줄어든다.</li>
+<li>scope late correction이 줄어든다.</li>
+<li><code>files_read / files_changed</code> 비율이 개선된다.</li>
+<li><code>complete</code>가 배경 설명보다 산출물에 쓰인다.</li>
+</ul>
+<p>이 단계의 함정은 브리프를 또 하나의 긴 문서로 만드는 것이다. 브리프는 결정을 돕는 정보만 담아야 한다. 불안해서 붙인 전체 로그와 회의록은 브리프가 아니라 비용이다.</p>
+<h2 id="level-4-지표-리뷰가-정책으로-이어진다"><a class="header" href="#level-4-지표-리뷰가-정책으로-이어진다">Level 4: 지표 리뷰가 정책으로 이어진다</a></h2>
+<p>특징:</p>
+<ul>
+<li>작업별 usage worksheet를 기록한다.</li>
+<li>주간 token review를 한다.</li>
+<li>가장 비싼 작업을 골라 원인을 분류한다.</li>
+<li>리뷰 결과가 <code>AGENTS.md</code>, 브리프 템플릿, command policy 변경으로 이어진다.</li>
+</ul>
+<p>좋아지는 지표:</p>
+<ul>
+<li>작업 유형별 baseline이 생긴다.</li>
+<li><code>cache_create_pressure</code>가 안정된다.</li>
+<li>retry가 많은 작업의 원인을 설명할 수 있다.</li>
+<li>비싼 작업이 “어려워서 비쌌는지”, “컨텍스트가 나빠서 비쌌는지” 구분된다.</li>
+</ul>
+<p>이 단계부터 토큰 운영은 즉흥적인 개인 기량이 아니라 개인 운영 체계가 된다. 중요한 산출물은 그래프가 아니라 다음 작업 전에 바뀐 정책이다.</p>
+<h2 id="level-5-컨텍스트-아키텍처를-설계한다"><a class="header" href="#level-5-컨텍스트-아키텍처를-설계한다">Level 5: 컨텍스트 아키텍처를 설계한다</a></h2>
+<p>특징:</p>
+<ul>
+<li>stable context와 dynamic context가 분리되어 있다.</li>
+<li>long-horizon 작업에서는 compaction과 note-taking을 쓴다.</li>
+<li>탐색은 필요한 evidence만 메인 컨텍스트에 남긴다.</li>
+<li>큰 작업은 sub-agent나 별도 탐색 단계로 분리한다.</li>
+<li>사내 harness나 telemetry가 공통 schema로 지표를 수집한다.</li>
+</ul>
+<p>좋아지는 지표:</p>
+<ul>
+<li>반복 작업에서 <code>cache_read_ratio</code>가 높다.</li>
+<li><code>steady_cache_create_avg</code>가 낮다.</li>
+<li>큰 작업에서도 request가 milestone 단위로 설명된다.</li>
+<li>탐색 noise가 메인 대화에 오래 남지 않는다.</li>
+</ul>
+<p>이 단계의 목표는 토큰을 최소화하는 것이 아니다. 고난도 작업에 충분한 컨텍스트를 쓰되, 버려야 할 컨텍스트를 오래 끌고 다니지 않는 것이다.</p>
+<h2 id="성숙도-진단표"><a class="header" href="#성숙도-진단표">성숙도 진단표</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>질문</th><th>아니오라면</th></tr>
+</thead>
+<tbody>
+<tr><td>repo에 짧은 에이전트 지시 파일이 있는가?</td><td>Level 1에서 AGENTS.md를 만든다</td></tr>
+<tr><td>unknown output과 test log에 cap이 있는가?</td><td>Level 1 output policy를 먼저 도입한다</td></tr>
+<tr><td>bugfix/feature/review 브리프가 구분되는가?</td><td>Level 3 템플릿을 쓴다</td></tr>
+<tr><td>작업별 request/cache read/cache create/complete를 기록하는가?</td><td>Level 4 worksheet부터 시작한다</td></tr>
+<tr><td>비싼 작업 리뷰가 정책 변경으로 끝나는가?</td><td>리뷰 템플릿의 Action Items를 강제한다</td></tr>
+<tr><td>stable/dynamic context 순서가 고정되어 있는가?</td><td>Level 5 cache-friendly prompt skeleton을 적용한다</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="다음-단계-선택법"><a class="header" href="#다음-단계-선택법">다음 단계 선택법</a></h2>
+<p>어디부터 시작해야 할지 모르겠다면 다음 순서로 간다.</p>
+<ol>
+<li>로그와 명령 출력 cap을 만든다.</li>
+<li>AGENTS.md 첫 버전을 만든다.</li>
+<li>bugfix 브리프 템플릿을 도입한다.</li>
+<li>10개 작업의 usage worksheet를 작성한다.</li>
+<li>가장 비싼 작업 3개를 리뷰한다.</li>
+<li>cache read ratio와 cache create pressure를 본다.</li>
+<li>stable/dynamic context 순서를 고정한다.</li>
+</ol>
+<p>이 순서는 일부러 단순하다. 토큰 운영은 복잡한 대시보드에서 시작하지 않는다. 매번 같은 실수를 줄이는 작고 구체적인 정책에서 시작한다.</p>
+<h2 id="출처-14"><a class="header" href="#출처-14">출처</a></h2>
+<ul>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+<li><a href="https://github.com/microsoft/fastcontext">microsoft/fastcontext</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="15-최종-리뷰와-7일-실행-계획"><a class="header" href="#15-최종-리뷰와-7일-실행-계획">15. 최종 리뷰와 7일 실행 계획</a></h1>
+<p>이 책의 결론은 “토큰을 덜 쓰자“가 아니다. 결론은 더 정확하다. 개인 개발자는 에이전트가 읽어야 할 것, 읽지 말아야 할 것, 오래 기억해야 할 것, 이번 작업 뒤 버려야 할 것을 구분해야 한다. 그 구분이 생기면 request, cache create, uncached input, complete가 자연스럽게 안정된다.</p>
+<h2 id="책-전체를-관통하는-다섯-문장"><a class="header" href="#책-전체를-관통하는-다섯-문장">책 전체를 관통하는 다섯 문장</a></h2>
+<ol>
+<li>토큰 제한은 프롬프트 길이 문제가 아니라 작업 운영 문제다.</li>
+<li>캐시는 정적인 컨텍스트를 앞에 두고 동적인 컨텍스트를 뒤에 둘 때 살아난다.</li>
+<li>도구 출력은 무료가 아니다. 모델이 읽는 순간 입력 토큰이 된다.</li>
+<li>좋은 작업 브리프는 에이전트가 물어볼 질문을 줄인다.</li>
+<li>비싼 작업 리뷰는 반성이 아니라 정책 변경으로 끝나야 한다.</li>
+</ol>
+<p>이 다섯 문장만 개인 작업 규칙으로 남겨도 많은 낭비가 줄어든다.</p>
+<h2 id="최종-원고-리뷰-체크"><a class="header" href="#최종-원고-리뷰-체크">최종 원고 리뷰 체크</a></h2>
+<p>책을 개인 작업 매뉴얼이나 repo 운영 문서로 옮기기 전에 다음을 확인한다.</p>
+<ul>
+<li>지표 용어가 하나의 schema로 정리되어 있는가?</li>
+<li><code>complete</code>와 <code>output_tokens</code>처럼 도구별 표현 차이를 설명했는가?</li>
+<li>좋은 비율과 나쁜 비율이 절대 규칙이 아니라 baseline 시작점으로 설명되는가?</li>
+<li>output cap 규칙이 line cap이 아니라 byte cap 중심으로 되어 있는가?</li>
+<li>AGENTS.md, 작업 브리프, usage worksheet, token review 템플릿이 모두 있는가?</li>
+<li>사례 연구가 request/cache create/uncached input/complete의 연결을 보여주는가?</li>
+<li>성숙도 모델이 다음 행동으로 이어지는가?</li>
+<li>모든 장이 출처와 연결되는가?</li>
+</ul>
+<p>이 체크는 문장 교정이 아니라 운영 가능성 점검이다. 읽고 고개를 끄덕이는 책보다, 다음 월요일에 정책 하나를 바꾸게 만드는 책이 더 낫다.</p>
+<h2 id="7일-실행-계획"><a class="header" href="#7일-실행-계획">7일 실행 계획</a></h2>
+<p>전체 작업 방식이 한 번에 바뀌는 것이 부담스럽다면 한 repo에서 7일만 시도한다.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>날짜</th><th>할 일</th><th>산출물</th></tr>
+</thead>
+<tbody>
+<tr><td>1일차</td><td>최근 에이전트 작업 5개를 되짚는다</td><td>비싼 작업 후보 목록</td></tr>
+<tr><td>2일차</td><td><code>AGENTS.md</code> 첫 버전을 만든다</td><td>package manager, 명령, output policy</td></tr>
+<tr><td>3일차</td><td>bugfix 브리프 템플릿을 적용한다</td><td>expected/actual, evidence, verification</td></tr>
+<tr><td>4일차</td><td>unknown output과 test log cap을 적용한다</td><td>command output policy</td></tr>
+<tr><td>5일차</td><td>usage worksheet를 3개 작업에 작성한다</td><td>request/cache/output 기록</td></tr>
+<tr><td>6일차</td><td>가장 비싼 작업 1개를 리뷰한다</td><td>원인과 정책 변경</td></tr>
+<tr><td>7일차</td><td>규칙을 줄이고 고정한다</td><td>AGENTS.md와 브리프 템플릿 개정</td></tr>
+</tbody>
+</table>
+</div>
+<p>이 7일 계획의 성공 기준은 토큰 총량이 즉시 줄었는지가 아니다. 성공 기준은 내가 “왜 비쌌는지“를 한 문장으로 설명하고, 다음 작업 전에 바꿀 정책을 하나 찾았는지다.</p>
+<h2 id="운영-시작-전-최소-세트"><a class="header" href="#운영-시작-전-최소-세트">운영 시작 전 최소 세트</a></h2>
+<p>바로 시작하려면 다음 네 개만 있으면 된다.</p>
+<ul>
+<li><code>AGENTS.md</code>: repo 규칙, 명령, output policy</li>
+<li>작업 브리프: bugfix/feature/review 중 하나</li>
+<li>usage worksheet: request, cache read, cache create, uncached input, output 기록</li>
+<li>주간 리뷰: 가장 비싼 작업 3개와 정책 변경</li>
+</ul>
+<p>이 최소 세트는 가볍지만 강하다. 에이전트가 매번 다시 배우는 비용을 줄이고, 사용자가 매번 다시 설명하는 피로를 줄인다.</p>
+<h2 id="마지막-판단-기준"><a class="header" href="#마지막-판단-기준">마지막 판단 기준</a></h2>
+<p>토큰 운영이 좋아졌는지 보려면 다음 질문을 던진다.</p>
+<ul>
+<li>같은 종류의 작업에서 request가 줄었는가?</li>
+<li>첫 request 이후 cache read가 늘었는가?</li>
+<li>cache create가 매번 반복되지 않는가?</li>
+<li>테스트 실패 로그가 전체 입력을 지배하지 않는가?</li>
+<li>complete가 실제 산출물에 쓰이는가?</li>
+<li>비싼 작업 리뷰가 다음 정책 변경으로 이어지는가?</li>
+</ul>
+<p>이 질문에 답할 수 있다면 이미 중요한 전환을 이룬 것이다. 더 이상 “에이전트가 이번에는 왜 많이 썼지?“라고 막연히 묻지 않는다. 대신 “이번 작업은 브리프가 약했고, 로그가 커졌고, cacheable prefix가 깨졌다“처럼 고칠 수 있는 언어로 말하게 된다.</p>
+<p>그 언어가 생기는 순간, 토큰은 불편한 제한이 아니라 작업 시스템을 개선하는 계측값이 된다.</p>
+<h2 id="출처-15"><a class="header" href="#출처-15">출처</a></h2>
+<ul>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="a-소스-맵"><a class="header" href="#a-소스-맵">A. 소스 맵</a></h1>
+<p>이 부록은 참고자료가 책의 어떤 주장에 연결되는지 정리한다.</p>
+<h2 id="meirtzawesome-context-engineering"><a class="header" href="#meirtzawesome-context-engineering">Meirtz/Awesome-Context-Engineering</a></h2>
+<p>이 저장소는 context engineering을 단순 prompt 작성이 아니라 LLM에 제공되는 전체 정보 payload를 설계하는 문제로 본다. 특히 2026 agent era update는 context engineering의 중심이 “좋은 prompt를 pack하는 법“에서 agent runtime, memory, tools, protocols, approvals, long-horizon execution으로 이동했다고 설명한다.</p>
+<p>이 책에서는 다음 장에 연결한다.</p>
+<ul>
+<li>[[01_token_budget_as_operations|1장]]: 토큰 제한을 운영 문제로 보는 관점</li>
+<li>[[06_instruction_drift|6장]]: 정적 prompt보다 runtime context와 memory를 관리해야 한다는 관점</li>
+<li>[[10_context_packets|10장]]: context packet 설계</li>
+<li>[[14_maturity_model|14장]]: context engineering을 개인 개발자의 성숙도와 운영 체계로 보는 관점</li>
+</ul>
+<h2 id="austin1serbagents-md"><a class="header" href="#austin1serbagents-md">Austin1serb/agents-md</a></h2>
+<p>이 저장소는 AGENTS.md와 Codex prompt pattern을 통해 context discipline, safer command output, lower token usage를 다룬다. 특히 byte-capped command output을 가장 큰 현재 win으로 제시하며, line limit보다 byte cap이 안전하다고 설명한다.</p>
+<p>이 책에서는 다음 장에 연결한다.</p>
+<ul>
+<li>[[05_large_reads_and_logs|5장]]: 큰 로그와 파일 출력 제어</li>
+<li>[[09_agents_md_and_project_memory|9장]]: AGENTS.md 구조</li>
+<li>[[12_operating_playbook|12장]]: 개인 작업 정책으로 고정하는 방법</li>
+<li>[[13_case_studies|13장]]: byte cap, output policy, 작업 브리프가 지표에 미치는 영향</li>
+<li>[[15_final_review|15장]]: 7일 실행 계획과 최소 운영 세트</li>
+</ul>
+<h2 id="microsoftfastcontext"><a class="header" href="#microsoftfastcontext">microsoft/fastcontext</a></h2>
+<p>FastContext는 coding agent를 위한 efficient repository explorer를 훈련하는 연구/도구 방향이다. repo 탐색을 별도 explorer 문제로 보고, 최종 답변에 필요한 evidence를 찾는 구조를 강조한다.</p>
+<p>이 책에서는 다음 장에 연결한다.</p>
+<ul>
+<li>[[07_exploration_in_main_context|7장]]: 탐색과 실행 컨텍스트 분리</li>
+<li>[[11_measurement_dashboard|11장]]: files read, files changed, citation quality 같은 탐색 효율 지표</li>
+<li>[[14_maturity_model|14장]]: 탐색 noise를 줄이는 성숙도 상위 단계</li>
+</ul>
+<h2 id="anthropic-effective-context-engineering-for-ai-agents"><a class="header" href="#anthropic-effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></h2>
+<p>Anthropic의 이 글은 agent context를 finite resource로 보고, 원하는 결과를 만들 가능성을 가장 크게 높이는 “작지만 high-signal인 token set“을 유지해야 한다고 설명한다. 또한 agentic search와 just-in-time context retrieval, long-horizon task를 위한 compaction, structured note-taking, sub-agent architecture를 소개한다.</p>
+<p>이 책에서는 다음 장에 연결한다.</p>
+<ul>
+<li>[[01_token_budget_as_operations|1장]]: 토큰 예산을 attention budget과 운영 자원으로 보는 관점</li>
+<li>[[07_exploration_in_main_context|7장]]: 전체 데이터를 미리 넣지 않고 file path, query, link 같은 lightweight reference로 런타임 탐색하는 방식</li>
+<li>[[10_context_packets|10장]]: high-signal context packet 설계</li>
+<li>[[12_operating_playbook|12장]]: compaction, note-taking, sub-agent 분리 같은 long-horizon 운영 전략</li>
+<li>[[13_case_studies|13장]]: high-signal context가 request, retry, complete를 줄이는 사례</li>
+<li>[[14_maturity_model|14장]]: stable/dynamic context와 long-horizon context architecture</li>
+<li>[[15_final_review|15장]]: 개인 개발자가 high-signal context 운영을 시작하는 최소 절차</li>
+</ul>
+<h2 id="anthropic-claude-prompt-caching-docs"><a class="header" href="#anthropic-claude-prompt-caching-docs">Anthropic Claude Prompt Caching Docs</a></h2>
+<p>Anthropic 문서는 prompt caching의 동작, 가격 multiplier, cache read/create/input token breakdown, cache invalidation pattern을 설명한다. 특히 <code>cache_creation_input_tokens</code>, <code>cache_read_input_tokens</code>, <code>input_tokens</code>를 분리해서 total input token을 계산하는 방식이 이 책의 지표 체계에 직접 연결된다.</p>
+<p>이 책에서는 다음 장에 연결한다.</p>
+<ul>
+<li>[[03_usage_metrics|3장]]: request/cache read/cache create/complete 해석</li>
+<li>[[04_metric_ratios|4장]]: cache read ratio와 cache create pressure</li>
+<li>[[08_cache_breaking_prompts|8장]]: 캐시를 깨는 prompt 구조</li>
+<li>[[13_case_studies|13장]]: cache create가 반복되는 나쁜 trace 해석</li>
+<li>[[15_final_review|15장]]: request/cache/output 기록을 도입하는 7일 계획</li>
+</ul>
+<h2 id="출처-16"><a class="header" href="#출처-16">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Meirtz/Awesome-Context-Engineering">Meirtz/Awesome-Context-Engineering</a></li>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+<li><a href="https://github.com/microsoft/fastcontext">microsoft/fastcontext</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="b-체크리스트"><a class="header" href="#b-체크리스트">B. 체크리스트</a></h1>
+<h2 id="작업-시작-전"><a class="header" href="#작업-시작-전">작업 시작 전</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 목표가 한 문장으로 쓰였는가?</li>
+<li><input disabled="" type="checkbox"> 수정 범위와 제외 범위가 있는가?</li>
+<li><input disabled="" type="checkbox"> 관련 파일 후보가 있거나 찾는 방법이 있는가?</li>
+<li><input disabled="" type="checkbox"> 검증 명령이 명시되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 완료 조건이 관찰 가능한가?</li>
+<li><input disabled="" type="checkbox"> repo 공통 규칙은 대화가 아니라 파일에 있는가?</li>
+</ul>
+<h2 id="도구-출력"><a class="header" href="#도구-출력">도구 출력</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 처음 보는 출력에 byte cap을 걸었는가?</li>
+<li><input disabled="" type="checkbox"> 테스트 실패는 tail부터 봤는가?</li>
+<li><input disabled="" type="checkbox"> 큰 파일은 <code>rg</code>로 위치를 좁힌 뒤 읽었는가?</li>
+<li><input disabled="" type="checkbox"> generated/build artifact/lockfile 전체를 불필요하게 읽지 않았는가?</li>
+<li><input disabled="" type="checkbox"> 가장 큰 출력이 실제 결정에 쓰였는가?</li>
+</ul>
+<h2 id="캐시-효율"><a class="header" href="#캐시-효율">캐시 효율</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 정적 지시가 앞쪽에 있는가?</li>
+<li><input disabled="" type="checkbox"> 작업별 동적 입력은 뒤쪽에 있는가?</li>
+<li><input disabled="" type="checkbox"> timestamp, 로그, request id가 cacheable prefix 앞에 있지 않은가?</li>
+<li><input disabled="" type="checkbox"> 첫 request 이후 cache create가 줄어드는가?</li>
+<li><input disabled="" type="checkbox"> 반복 작업에서 cache read ratio가 올라가는가?</li>
+</ul>
+<h2 id="agentsmd"><a class="header" href="#agentsmd">AGENTS.md</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> package manager와 주요 명령이 있다.</li>
+<li><input disabled="" type="checkbox"> 주요 경로와 수정 금지 영역이 있다.</li>
+<li><input disabled="" type="checkbox"> command output policy가 있다.</li>
+<li><input disabled="" type="checkbox"> verification policy가 있다.</li>
+<li><input disabled="" type="checkbox"> final response policy가 있다.</li>
+<li><input disabled="" type="checkbox"> 2분 안에 읽을 수 있다.</li>
+<li><input disabled="" type="checkbox"> 오래된 규칙이 제거된다.</li>
+</ul>
+<h2 id="사후-리뷰"><a class="header" href="#사후-리뷰">사후 리뷰</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> request가 예상보다 많았는가?</li>
+<li><input disabled="" type="checkbox"> retry가 어디서 발생했는가?</li>
+<li><input disabled="" type="checkbox"> cache read가 낮은 이유를 설명할 수 있는가?</li>
+<li><input disabled="" type="checkbox"> cache create가 반복된 이유를 설명할 수 있는가?</li>
+<li><input disabled="" type="checkbox"> complete가 산출물보다 설명에 쓰이지 않았는가?</li>
+<li><input disabled="" type="checkbox"> 다음 작업에서 줄일 수 있는 정책 하나가 생겼는가?</li>
+</ul>
+<h2 id="출처-17"><a class="header" href="#출처-17">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="c-용어집"><a class="header" href="#c-용어집">C. 용어집</a></h1>
+<h2 id="request-1"><a class="header" href="#request-1">request</a></h2>
+<p>모델 호출 1회를 뜻한다. 코딩 에이전트에서는 사용자 메시지뿐 아니라 도구 결과를 읽고 다음 행동을 결정하는 내부 호출도 비용에 포함될 수 있다.</p>
+<h2 id="input-tokens"><a class="header" href="#input-tokens">input tokens</a></h2>
+<p>모델에 들어간 입력 토큰이다. 캐시를 쓰는 API에서는 uncached input만 별도 <code>input_tokens</code>로 표시될 수 있으므로, 공급자별 정의를 확인해야 한다.</p>
+<h2 id="cache-read-1"><a class="header" href="#cache-read-1">cache read</a></h2>
+<p>이미 캐시된 prompt prefix를 재사용한 토큰이다. 보통 새로 처리하는 입력보다 비용과 latency가 낮다.</p>
+<h2 id="cache-create-1"><a class="header" href="#cache-create-1">cache create</a></h2>
+<p>새로운 cache entry를 만들기 위해 처리한 토큰이다. 초기 투자로는 정상이나, 매 request마다 높으면 cache invalidation을 의심한다.</p>
+<h2 id="complete-1"><a class="header" href="#complete-1">complete</a></h2>
+<p>모델이 생성한 출력 토큰이다. <code>completion_tokens</code>, <code>output_tokens</code> 등으로 표시되기도 한다.</p>
+<p>이 책에서는 <code>complete</code>와 <code>output_tokens</code>를 같은 층의 말로 다룬다. 도구 UI가 <code>complete</code>라고 부르면 그대로 쓰고, CSV나 telemetry schema에서는 <code>output_tokens</code>로 정규화한다.</p>
+<h2 id="uncached-input"><a class="header" href="#uncached-input">uncached input</a></h2>
+<p>캐시 재사용 없이 새로 처리되는 입력 토큰이다. 도구 출력, 최신 사용자 메시지, 현재 작업 브리프, 최근 로그가 여기에 들어가기 쉽다.</p>
+<h2 id="stable-context"><a class="header" href="#stable-context">stable context</a></h2>
+<p>여러 request에서 거의 바뀌지 않는 컨텍스트다. repo 규칙, coding convention, 테스트 명령, 반복 rubric처럼 cache read로 재사용되기 좋은 정보다.</p>
+<h2 id="dynamic-context"><a class="header" href="#dynamic-context">dynamic context</a></h2>
+<p>현재 작업마다 바뀌는 컨텍스트다. 사용자 최신 요구, 테스트 로그, tool output, git diff, timestamp가 여기에 속한다. cacheable prefix 앞쪽에 두면 cache create가 반복될 수 있다.</p>
+<h2 id="high-signal-context"><a class="header" href="#high-signal-context">high-signal context</a></h2>
+<p>결정에 직접 영향을 주는 작은 컨텍스트다. 전체 로그보다 첫 actionable failure, 전체 파일보다 관련 함수 주변부, 회의록 전체보다 결정된 scope가 high-signal context에 가깝다.</p>
+<h2 id="prefix"><a class="header" href="#prefix">prefix</a></h2>
+<p>프롬프트의 앞부분이다. prompt caching은 대개 동일한 prefix 재사용에 의존하므로, 정적인 정보를 앞쪽에 배치하는 것이 중요하다.</p>
+<h2 id="breakpoint"><a class="header" href="#breakpoint">breakpoint</a></h2>
+<p>캐시할 prefix의 끝 지점이다. breakpoint 앞쪽에 바뀌는 값이 들어가면 cache hit가 어려워진다.</p>
+<h2 id="context-packet"><a class="header" href="#context-packet">context packet</a></h2>
+<p>이번 작업에 필요한 목표, 범위, evidence, 제약, 검증 조건을 묶은 입력 단위다.</p>
+<h2 id="agentsmd-1"><a class="header" href="#agentsmd-1">AGENTS.md</a></h2>
+<p>코딩 에이전트에게 repo별 작업 규칙을 알려주는 markdown 지시 파일 패턴이다. 도구마다 파일명과 지원 방식은 다를 수 있다.</p>
+<h2 id="tool-output"><a class="header" href="#tool-output">tool output</a></h2>
+<p>셸 명령, 파일 읽기, 검색, 테스트 실행, 브라우저 검사 등 도구가 반환한 출력이다. 모델이 읽는 순간 입력 토큰 비용이 된다.</p>
+<h2 id="retry-count"><a class="header" href="#retry-count">retry count</a></h2>
+<p>실패 후 재시도한 횟수다. 토큰 비용뿐 아니라 요구사항 명확성, 검증 품질, 탐색 효율을 보여주는 신호다.</p>
+<h2 id="출처-18"><a class="header" href="#출처-18">출처</a></h2>
+<ul>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="d-지표-워크시트와-예시-trace"><a class="header" href="#d-지표-워크시트와-예시-trace">D. 지표 워크시트와 예시 Trace</a></h1>
+<p>이 부록은 개인 개발자가 바로 복사해서 쓸 수 있는 기록 양식이다. 처음부터 자동 수집을 만들 필요는 없다. 10개 작업만 수동으로 기록해도 어디서 토큰이 새는지 보인다.</p>
+<h2 id="작업-단위-기록지"><a class="header" href="#작업-단위-기록지">작업 단위 기록지</a></h2>
+<pre><code class="language-markdown">## Task Usage Record
+
+- Task ID:
+- Date:
+- Repository:
+- Agent:
+- Task type:
+- Result:
+
+### Usage
+
+- Request count:
+- Cache read tokens:
+- Cache create tokens:
+- Uncached input tokens:
+- Output/complete tokens:
+- Largest tool output:
+- Tool output bytes:
+
+### Work Shape
+
+- Files read:
+- Files changed:
+- Test runs:
+- Retry count:
+- Blocked by:
+
+### Review
+
+- Was the largest tool output necessary:
+- Did cache read increase after request 1:
+- Did cache create stay high after request 1:
+- Was completion mostly code/diff/verification:
+- What should be added to AGENTS.md:
+- What should be added to the task brief template:
+</code></pre>
+<h2 id="작업-유형별-기대-패턴"><a class="header" href="#작업-유형별-기대-패턴">작업 유형별 기대 패턴</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>작업 유형</th><th>좋은 패턴</th><th>경고 패턴</th></tr>
+</thead>
+<tbody>
+<tr><td>docs</td><td>request가 적고 output share가 높음</td><td>파일 탐색이 넓고 cache create가 반복됨</td></tr>
+<tr><td>small bugfix</td><td>files read가 작고 retry가 낮음</td><td>테스트 로그가 uncached input을 지배함</td></tr>
+<tr><td>feature</td><td>request와 output이 중간 이상, 검증이 명확함</td><td>scope가 흔들려 files read와 retry가 계속 증가함</td></tr>
+<tr><td>refactor</td><td>files changed가 많고 test_runs가 많음</td><td>complete가 설명에 치우치고 검증이 부족함</td></tr>
+<tr><td>review</td><td>output이 findings에 집중됨</td><td>diff 전체를 반복해서 읽고 같은 내용을 요약함</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="예시-1-건강한-bugfix"><a class="header" href="#예시-1-건강한-bugfix">예시 1: 건강한 Bugfix</a></h2>
+<pre><code class="language-text">task_id: AUTH-142
+task_type: bugfix
+request_count: 5
+cache_read_tokens: 72,000
+cache_create_tokens: 19,000
+uncached_input_tokens: 8,500
+output_tokens: 6,200
+tool_output_bytes: 18,000
+files_read: 6
+files_changed: 2
+test_runs: 3
+retry_count: 1
+result: success
+</code></pre>
+<p>해석:</p>
+<ul>
+<li>첫 request에서 repo 규칙과 작업 맥락을 캐시에 올린 뒤 cache read가 잘 유지되었다.</li>
+<li>files read 대비 files changed가 3:1로 나쁘지 않다.</li>
+<li>retry가 1회 있었지만 test output이 과도하게 커지지 않았다.</li>
+<li>다음 작업을 위해 AGENTS.md에 추가할 내용은 없다. 작업 브리프가 충분했다.</li>
+</ul>
+<h2 id="예시-2-캐시가-깨진-bugfix"><a class="header" href="#예시-2-캐시가-깨진-bugfix">예시 2: 캐시가 깨진 Bugfix</a></h2>
+<pre><code class="language-text">task_id: BILLING-209
+task_type: bugfix
+request_count: 9
+cache_read_tokens: 21,000
+cache_create_tokens: 88,000
+uncached_input_tokens: 114,000
+output_tokens: 19,000
+tool_output_bytes: 220,000
+files_read: 24
+files_changed: 1
+test_runs: 5
+retry_count: 4
+result: success
+</code></pre>
+<p>해석:</p>
+<ul>
+<li>cache create가 request마다 높다. 동적 로그나 timestamp가 cacheable prefix 앞쪽에 있었을 가능성이 높다.</li>
+<li>files read가 24인데 changed는 1이다. 탐색 범위가 넓었거나 초기 브리프가 약했다.</li>
+<li>tool output bytes가 크다. 테스트 로그를 전체로 읽었을 가능성이 있다.</li>
+<li>처방은 로그 tail cap, 관련 파일 후보 요청, 실패 요약 유지다.</li>
+</ul>
+<h2 id="예시-3-output이-비싼-문서-작업"><a class="header" href="#예시-3-output이-비싼-문서-작업">예시 3: Output이 비싼 문서 작업</a></h2>
+<pre><code class="language-text">task_id: DOC-031
+task_type: docs
+request_count: 2
+cache_read_tokens: 18,000
+cache_create_tokens: 6,000
+uncached_input_tokens: 1,200
+output_tokens: 4,200
+tool_output_bytes: 2,000
+files_read: 3
+files_changed: 1
+test_runs: 0
+retry_count: 0
+result: success
+</code></pre>
+<p>해석:</p>
+<ul>
+<li>output share가 높지만 문서 작업에서는 정상이다.</li>
+<li>request와 tool output이 낮고, 변경 파일이 명확하다.</li>
+<li>이 작업은 토큰 낭비 사례가 아니다. complete가 실제 산출물로 쓰였기 때문이다.</li>
+</ul>
+<h2 id="회고-질문"><a class="header" href="#회고-질문">회고 질문</a></h2>
+<ul>
+<li>비싼 작업은 정말 어려웠는가, 아니면 컨텍스트가 지저분했는가?</li>
+<li>cache read가 낮은 작업은 정적 지시를 재사용하지 못했는가?</li>
+<li>cache create가 높은 작업은 동적 입력을 앞쪽에 넣었는가?</li>
+<li>가장 큰 tool output은 다음 결정을 바꾸었는가?</li>
+<li>다음번에는 작업 브리프, AGENTS.md, command policy 중 무엇을 바꾸면 되는가?</li>
+</ul>
+<h2 id="출처-19"><a class="header" href="#출처-19">출처</a></h2>
+<ul>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="e-운영-템플릿"><a class="header" href="#e-운영-템플릿">E. 운영 템플릿</a></h1>
+<p>이 부록은 개인 repo에 바로 옮겨 쓸 수 있는 템플릿 모음이다. 그대로 복사하기보다, 실제 명령과 경로를 채운 뒤 100~200줄 안으로 유지하는 것을 권장한다.</p>
+<h2 id="agentsmd-템플릿"><a class="header" href="#agentsmd-템플릿">AGENTS.md 템플릿</a></h2>
+<pre><code class="language-markdown"># AGENTS.md
+
+## Project Snapshot
+
+- Runtime:
+- Package manager:
+- Main app paths:
+- Main test paths:
+- Generated files:
+
+## Common Commands
+
+- Install:
+- Typecheck:
+- Unit test:
+- Focused test:
+- Build:
+- Lint:
+
+## Editing Rules
+
+- Prefer existing local patterns over new abstractions.
+- Do not edit generated files:
+- Do not change public APIs unless the task explicitly asks for it.
+- Keep unrelated refactors out of task changes.
+
+## Command Output Policy
+
+- For unknown or potentially large output, start with `head -c 4000`.
+- For test failures and recent logs, start with `tail -c 12000`.
+- Use `rg` before opening large files.
+- Do not read lockfiles, build artifacts, or generated files in full unless necessary.
+
+## Verification Policy
+
+- Required checks before final response:
+- If a check cannot run, report why and what was verified instead.
+- If tests fail, summarize the first actionable failure and avoid pasting full logs.
+
+## Final Response Policy
+
+Include:
+- Changed files
+- Checks run
+- Remaining risk
+
+Do not include:
+- Long command output
+- Full diffs unless requested
+- Repeated background already known from the task
+</code></pre>
+<h2 id="bugfix-브리프"><a class="header" href="#bugfix-브리프">Bugfix 브리프</a></h2>
+<pre><code class="language-markdown">## Goal
+
+Fix:
+
+## Expected / Actual
+
+- Expected:
+- Actual:
+
+## Reproduction
+
+1.
+2.
+3.
+
+## Evidence
+
+- Error message:
+- Relevant log excerpt:
+- Suspected files:
+
+## Scope
+
+- In scope:
+- Out of scope:
+
+## Constraints
+
+- API compatibility:
+- UX compatibility:
+- Performance/security:
+
+## Verification
+
+- Focused test:
+- Manual check:
+- Regression check:
+</code></pre>
+<h2 id="feature-브리프"><a class="header" href="#feature-브리프">Feature 브리프</a></h2>
+<pre><code class="language-markdown">## Goal
+
+Implement:
+
+## User Flow
+
+1.
+2.
+3.
+
+## Scope
+
+- Include:
+- Exclude:
+
+## Existing Patterns
+
+- Similar component:
+- Similar test:
+- Similar API:
+
+## Constraints
+
+- API:
+- Design:
+- Performance:
+- Accessibility:
+
+## Verification
+
+- Unit:
+- Integration:
+- Manual:
+</code></pre>
+<h2 id="review-브리프"><a class="header" href="#review-브리프">Review 브리프</a></h2>
+<pre><code class="language-markdown">## Review Target
+
+- Branch/PR:
+- Diff range:
+
+## Review Priorities
+
+1. Correctness
+2. Security
+3. Regression risk
+4. Missing tests
+
+## Known Context
+
+- Intended behavior:
+- Non-goals:
+- Risky areas:
+
+## Output Format
+
+- Findings first
+- File/line references
+- Severity ordering
+- Short summary only after findings
+</code></pre>
+<h2 id="캐시-친화-프롬프트-골격-1"><a class="header" href="#캐시-친화-프롬프트-골격-1">캐시 친화 프롬프트 골격</a></h2>
+<pre><code class="language-markdown">## Stable Context
+
+### Agent Role
+
+You are a coding agent working in this repository. Use the repository rules and verify changes before reporting completion.
+
+### Repository Rules
+
+- Package manager:
+- Test command:
+- Generated files:
+- Output policy:
+
+### Reusable Rubric
+
+- Find the smallest relevant context before editing.
+- Prefer targeted search over full-file reads.
+- Keep dynamic tool output out of stable context.
+- Report changed files, checks, and residual risk.
+
+## Dynamic Task Context
+
+### Current Task
+
+### Scope
+
+### Evidence
+
+### Latest Tool Output Summary
+
+### User Additions
+</code></pre>
+<h2 id="주간-token-review-템플릿"><a class="header" href="#주간-token-review-템플릿">주간 Token Review 템플릿</a></h2>
+<pre><code class="language-markdown">## Weekly Agent Token Review
+
+Period:
+Repositories:
+Tasks sampled:
+
+### Expensive Tasks
+
+| Task | Cause | Avoidable | Policy Change |
+| --- | --- | --- | --- |
+| | | | |
+
+### Cache Health
+
+- Best cache read ratio:
+- Worst cache read ratio:
+- Repeated cache create cause:
+
+### Tool Output
+
+- Largest output:
+- Was it needed:
+- New cap rule:
+
+### Action Items
+
+- AGENTS.md:
+- Brief template:
+- Test/log command:
+- Dashboard:
+</code></pre>
+<h2 id="출처-20"><a class="header" href="#출처-20">출처</a></h2>
+<ul>
+<li><a href="https://github.com/Austin1serb/agents-md">Austin1serb/agents-md</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic Claude Docs: Prompt caching</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
