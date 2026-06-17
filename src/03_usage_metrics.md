@@ -69,15 +69,16 @@ total_input_tokens = cache_read_input_tokens + cache_creation_input_tokens + inp
 
 도구와 API마다 usage field 이름은 다르다. 개인 작업 로그에서도 공급자별 원본 이름을 그대로 쓰기보다, 먼저 공통 schema로 정규화하는 편이 좋다.
 
-| 공통 이름 | 의미 | 흔한 원본 이름 |
-| --- | --- | --- |
-| `request_count` | 모델 호출 횟수 | request, run, response, message call |
-| `cache_read_tokens` | 캐시에서 읽은 입력 토큰 | cache read, cached input, `cache_read_input_tokens`, cached tokens |
-| `cache_create_tokens` | 새 cache entry 생성에 쓴 입력 토큰 | cache create, cache write, `cache_creation_input_tokens` |
-| `uncached_input_tokens` | 캐시 처리 밖의 일반 입력 토큰 | input, prompt, non-cached input |
-| `output_tokens` | 모델이 생성한 토큰 | complete, completion, output |
-| `tool_output_bytes` | 모델에 들어가기 전 도구 출력 크기 | command output bytes, log bytes, observation size |
-| `retry_count` | 실패 후 재시도 횟수 | retries, repair loop count, failed attempts |
+| 공통 이름                   | 의미                        | 흔한 원본 이름                                                           |
+| ----------------------- | ------------------------- | ------------------------------------------------------------------ |
+| `request_count`         | 모델 호출 횟수                  | request, run, response, message call                               |
+| `cache_read_tokens`     | 캐시에서 읽은 입력 토큰             | cache read, cached input, `cache_read_input_tokens`, cached tokens |
+| `cache_create_tokens`   | 새 cache entry 생성에 쓴 입력 토큰 | cache create, cache write, `cache_creation_input_tokens`           |
+| `uncached_input_tokens` | 캐시 처리 밖의 일반 입력 토큰         | input, prompt, non-cached input                                    |
+| `output_tokens`         | 모델이 생성한 토큰                | complete, completion, output                                       |
+| `tool_output_bytes`     | 모델에 들어가기 전 도구 출력 크기       | command output bytes, log bytes, observation size                  |
+| `retry_count`           | 실패 후 재시도 횟수               | retries, repair loop count, failed attempts                        |
+|                         |                           |                                                                    |
 
 이 정규화는 숫자를 예쁘게 보이기 위한 작업이 아니다. 같은 작업을 Codex, Claude Code, Cursor, 사내 harness에서 비교하려면 "이 도구의 `complete`가 저 도구의 `output_tokens`와 같은 층인가"를 먼저 맞춰야 한다.
 

@@ -32,6 +32,10 @@
 - [14. 토큰 운영 성숙도 모델](./14_maturity_model.md)
 - [15. 최종 리뷰와 7일 실행 계획](./15_final_review.md)
 
+# Part 6. 실제 Vault 분석
+
+- [16. work_vault 사례 분석](./16_work_vault_case_analysis.md)
+
 # Appendices
 
 - [A. 소스 맵](./appendix_a_source_map.md)
